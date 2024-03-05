@@ -1,0 +1,26 @@
+{
+    "AAA2": {
+        "Nome": "fanta",
+        "Preco": 5.57326,
+        "Quantidade": 5.0,
+        "Disponivel": true
+    },
+    "AAA1": {
+        "Nome": "coca",
+        "Preco": 9.24924,
+        "Quantidade": 7.0,
+        "Disponivel": true
+    },
+    "AAA3": {
+        "Nome": "laranja",
+        "Preco": 4.387460000000001,
+        "Quantidade": 80.0,
+        "Disponivel": true
+    },
+    "M2": {
+        "Nome": "maracuja",
+        "Preco": 10.285,
+        "Quantidade": 0.0,
+        "Disponivel": false
+    }
+}

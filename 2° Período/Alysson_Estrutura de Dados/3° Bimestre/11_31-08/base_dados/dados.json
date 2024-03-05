@@ -1,0 +1,14 @@
+{
+    "alunos": [
+        {
+            "nome": "Fulano",
+            "idade": 10,
+            "matriculado": true
+        },
+        {
+            "nome": "Beltrana",
+            "idade": 12,
+            "matriculado": false
+        }
+    ]
+}
