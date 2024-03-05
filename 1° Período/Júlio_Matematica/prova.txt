@@ -1,0 +1,71 @@
+import numpy as np
+
+matriz1 = np.arange(6, 11)
+matriz2 = np.array([1, 2, 3, 4, 5])
+
+print (f'Matriz 1: {matriz1}')
+print (f'Matriz 2: {matriz2}')
+
+
+matriz3 = matriz1 + matriz2
+print (f'matriz 1 + matriz 2 : {matriz3}')
+
+matriz4 = matriz1 - matriz2
+print(f'matriz 1 - matriz 2 : {matriz4}')
+
+matriz5 = matriz1 * matriz2
+print (f'matriz 1 * matriz 2 : {matriz5}')
+
+matriz6= matriz1 / matriz2
+print (f'matriz1 / matriz2: {matriz6}') 
+
+m8 = np.array([1,2,3,4,5])
+print(f'Matriz m8: {m8}')
+
+print (f'm8 + 2: {m8 + 2}')
+
+print (f'm8 - 2: {m8 - 2}')
+
+print (f'm8 * 2: {m8 * 2}')
+
+print (f'm8 / 2: {m8 / 2}')
+
+print (f'm8 ** 2: {m8 ** 2}')
+
+matriz7= np.array([7,-3,4,2,7,3,8,9,1])
+print (matriz7)
+
+m7 = matriz7 > 5
+print (m7)
+
+---------------------------------------------------------
+
+
+import numpy as np
+M1 = np.array([[1,0,0],[1,3,1],[1,2,0]])
+print (M1)
+print()
+print(np.linalg.inv(M1))
+----------------------------------------------------------
+
+import numpy as np
+matriz1 = np.arange(6,11)
+print (matriz1)
+
+----------------------------------------------------------
+
+import numpy as np
+M1 = np.array([[1,2],[3,4]])
+print (f'Matriz 1: \n{M1}')
+
+M2= np.array([[1,2],[3,4]])
+print (f'\nMatriz 2: \n{M2}')
+
+print(f'\nSoma das matrizes: \n {M1+M2}')
+print(f'\nDiferença das matrizes: \n {M1-M2}')
+#produto não faz operação correta
+print(f'\nProduto das matrizes: \n {M1*M2}')
+print(f'\nDivisão das matrizes: \n {M1/M2}')
+#operação correta para multiplicação de matrizes
+print('\nPara realmente fazer o produto entre as matrizes usamos: ')
+print (M1.dot(M2))

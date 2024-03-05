@@ -1,0 +1,9 @@
+git init
+git status (vermelho)
+git add .
+git status (verde)
+git commit –m “coloque sua mensagem aqui”
+colar o q ta no git
+
+
+cd..
