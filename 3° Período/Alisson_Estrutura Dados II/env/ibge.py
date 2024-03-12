@@ -27,7 +27,7 @@ def lista(json):
         qtd = elemento.get("frequencia", 0)
         periodo.append(data)
         frequencia.append(qtd)
-    return periodo, frequencia
+    return periodo, frequencia #devolve duas listas em 2 variaveis diferentes
 
 
 #teste = busca("Jose")
