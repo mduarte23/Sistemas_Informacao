@@ -31,8 +31,8 @@ def minimo():
         nome = request.args.get("nome")
         response = busca(nome)
         data, qtd = lista(response)  # devolve o return da funcao em duas variaveis
-        menor_numero = min(qtd)
-        periodo = data[qtd.index(menor_numero)] #.index pega a posição do maior_numero na lista qtd
+        menor_numero = min(qtd) #pega o menor numero da lista 
+        periodo = data[qtd.index(menor_numero)] #.index pega a posição do menor_numero na lista qtd
 
 
         retorno = {
@@ -50,9 +50,9 @@ def maximo():
     try:
         nome = request.args.get("nome")
         response = busca(nome)
-        data, qtd = lista(response) 
-        maior_numero = max(qtd)
-        periodo = data[qtd.index(maior_numero)] 
+        data, qtd = lista(response)  # devolve o return da funcao em duas variaveis
+        maior_numero = max(qtd) #pega o maior numero da lista 
+        periodo = data[qtd.index(maior_numero)] #.index pega a posição do menor_numero na lista qtd
         retorno = {
             "Nome procurado": nome,
             "Periodo":  periodo,

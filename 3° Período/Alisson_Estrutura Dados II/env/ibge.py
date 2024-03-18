@@ -5,7 +5,7 @@ import requests #faz a requisição de algum endereço on-line
 def busca(nome):
     url = f"https://servicodados.ibge.gov.br/api/v2/censos/nomes/{nome}"
     resposta = requests.get(url)
-    return resposta.json()
+    return resposta.json() #retorna lista em JSON
 
 def calcula_ocorrencias(json):
     conteudo = json[0]
@@ -25,8 +25,8 @@ def lista(json):
     for elemento in resposta:
         data = elemento.get("periodo", 0)
         qtd = elemento.get("frequencia", 0)
-        periodo.append(data)
-        frequencia.append(qtd)
+        periodo.append(data) #cria uma lista dos periodos
+        frequencia.append(qtd) #cria uma lista das frequencias
     return periodo, frequencia #devolve duas listas em 2 variaveis diferentes
 
 
