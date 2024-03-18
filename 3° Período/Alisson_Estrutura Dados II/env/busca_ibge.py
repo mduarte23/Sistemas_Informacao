@@ -62,6 +62,8 @@ def maximo():
 
     except Exception as e:
         return f"Falha na rota /frequencia_max: {e}"
+    
+#@app.route("/ordem_crescente")    
 
 #debug == True para nao ser necessario recarregar a app no navegador, por
 app.run(debug=True)

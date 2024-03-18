@@ -7,9 +7,12 @@ def busca(nome):
     resposta = requests.get(url)
     return resposta.json() #retorna lista em JSON
 
+def retorn_lista(lista):
+    conteudo = lista[0] #cria a lista de nomes
+    return conteudo.get("res", [])  #tenta acessar a chave res, se não achar devolve uma lista vazia
+
 def calcula_ocorrencias(json):
-    conteudo = json[0]
-    resposta = conteudo.get("res", []) #tenta acessar a chave res, se não achar devolve uma lista vazia
+    resposta = retorn_lista(json)
     soma = []
     for elemento in resposta:
         frequencia = elemento.get("frequencia", 0) #pega a chave frequencia, se não tiver retorna 0 para tratar erros
@@ -18,8 +21,7 @@ def calcula_ocorrencias(json):
     return sum(soma)
         
 def lista(json):
-    conteudo = json[0]
-    resposta = conteudo.get("res", [])
+    resposta = retorn_lista(json)
     periodo = []
     frequencia = []
     for elemento in resposta:
