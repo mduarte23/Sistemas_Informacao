@@ -1,5 +1,5 @@
 from flask import Flask,request
-from ibge import busca, calcula_ocorrencias, lista
+from ibge import busca, calcula_ocorrencias, lista, lista_crescente
 #instanciar a aplicaçao 
 app = Flask(__name__)
 
@@ -63,7 +63,16 @@ def maximo():
     except Exception as e:
         return f"Falha na rota /frequencia_max: {e}"
     
-#@app.route("/ordem_crescente")    
+@app.route("/ordem_crescente") 
+#http://127.0.0.1:5000/ordem_crescente?nome=Marcelo   
+def ordernar():
+    try:
+        nome = request.args.get("nome")
+        response = busca(nome)
 
+        return lista_crescente(response)
+        
+    except Exception as e:
+        return f"Falha na rota /ordem_crescente: {e}"
 #debug == True para nao ser necessario recarregar a app no navegador, por
 app.run(debug=True)

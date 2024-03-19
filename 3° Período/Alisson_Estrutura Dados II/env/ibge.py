@@ -31,6 +31,30 @@ def lista(json):
         frequencia.append(qtd) #cria uma lista das frequencias
     return periodo, frequencia #devolve duas listas em 2 variaveis diferentes
 
+def lista_crescente(json):
+    periodo, frequencia = lista(json)
+    print (periodo)
+    print (frequencia)
+    
+    for i in range (len(frequencia)):
+        menor = i
+        for j in range (i+1, len(frequencia)):
+            if frequencia[menor] > frequencia[j]:
+                menor = j
+                periodo[i], periodo[menor] = periodo[menor], periodo[i]
+                frequencia[i], frequencia[menor] = frequencia[menor], frequencia[i]
+                
+
+    #print (periodo)
+    #print (frequencia)
+    
+    retorno = []
+    for i in range(len(frequencia)):
+        retorno.append(frequencia[i])
+
+    print (f"O {retorno}")
+    return retorno
+    
 
 #teste = busca("Jose")
 #print (teste)
