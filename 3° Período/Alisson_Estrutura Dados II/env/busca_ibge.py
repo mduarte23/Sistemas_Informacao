@@ -69,7 +69,6 @@ def ordernar():
     try:
         nome = request.args.get("nome")
         response = busca(nome)
-
         return lista_crescente(response)
         
     except Exception as e:

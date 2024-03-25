@@ -37,19 +37,16 @@ def lista_crescente(json):
     print (frequencia)
     
     for i in range (len(frequencia)):
-        menor = i
+        menor = i #pega o indice
         for j in range (i+1, len(frequencia)):
             if frequencia[menor] > frequencia[j]:
-                menor = j
+                menor = j #pega o indice para trocar
                 periodo[i], periodo[menor] = periodo[menor], periodo[i] #faz a troca de posiçoes 
                 frequencia[i], frequencia[menor] = frequencia[menor], frequencia[i] #faz a troca de posiçoes 
                 
-
-    #print (periodo)
-    #print (frequencia)
     
     retorno = {}
-    for i in range(len(frequencia)):
+    for i in range(len(frequencia)): #cria o dicionario da lista ordenada
         retorno[i] = str(frequencia[i]) +" : " + periodo[i]
     
 
@@ -57,5 +54,3 @@ def lista_crescente(json):
     return retorno
     
 
-#teste = busca("Jose")
-#print (teste)
