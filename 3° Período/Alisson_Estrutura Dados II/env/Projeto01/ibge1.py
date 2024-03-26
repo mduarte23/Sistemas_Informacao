@@ -11,3 +11,5 @@ def distrito():
     
     except Exception as e:
         return f"Falha na rota /distrito: {e}"
+    
+app.run(debug=True)
