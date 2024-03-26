@@ -1,5 +1,5 @@
 from flask import Flask,request
-from ibge import busca, calcula_ocorrencias, lista, lista_crescente
+from ibge import busca, calcula_ocorrencias, lista, lista_crescente, bublle_sort
 #instanciar a aplicaçao 
 app = Flask(__name__)
 
@@ -73,5 +73,19 @@ def ordernar():
         
     except Exception as e:
         return f"Falha na rota /ordem_crescente: {e}"
+
+    
+@app.route("/bublle_sort") 
+#http://127.0.0.1:5000/bublle_sort?nome=Marcelo   
+def bubleSort():
+    try:
+        nome = request.args.get("nome")
+        response = busca(nome)
+        data, qtd = lista(response)
+        return bublle_sort(data, qtd)
+        
+    except Exception as e:
+        return f"Falha na rota /buble_sort: {e}"
+    
 #debug == True para nao ser necessario recarregar a app no navegador, por
 app.run(debug=True)
