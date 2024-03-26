@@ -1,5 +1,5 @@
 from flask import Flask,request
-from funcoes import lista
+from funcoes import lista, nomes_cidades
 
 app = Flask(__name__)
 
@@ -7,9 +7,14 @@ app = Flask(__name__)
 def distrito():
     try:
         retorno = lista()
-        return retorno
+        teste = nomes_cidades(retorno)
+        print (teste)
+        return teste
     
     except Exception as e:
         return f"Falha na rota /distrito: {e}"
+    
+
+
     
 app.run(debug=True)
