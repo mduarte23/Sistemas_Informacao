@@ -6,8 +6,8 @@ def lista():
     return resposta.json()
 
 def nomes_cidades(lista):
-    teste = []
-    for i in range (0,len(lista)):
+    teste = lista()
+    for i in range (0,len(teste)):
         conteudo = lista[i]["id"]
         print (conteudo)
         teste.append = conteudo.get("nome", [])
