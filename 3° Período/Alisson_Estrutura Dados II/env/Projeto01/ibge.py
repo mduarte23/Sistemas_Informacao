@@ -3,7 +3,7 @@ from funcoes import lista_cidades, ordernar_cidades, busca_estado
 
 app = Flask(__name__)
 
-#ROta para buscar todas cidades do pais por ordem alfabetica
+#Rota para buscar todas cidades do pais por ordem alfabetica
 @app.route("/distritos_ordenados")
 def distrito():
     try:
@@ -14,7 +14,7 @@ def distrito():
         return f"Falha na rota /distritos_ordenados: {e}"
 
 #rota para mostrar todas cidades do estado em ordem alfabetica
-#nocessario passar    
+#necessario passar a sigla do estado como parametro "?estado=mg"   
 @app.route("/cidades_do_estado")
 def estados():
     try:
