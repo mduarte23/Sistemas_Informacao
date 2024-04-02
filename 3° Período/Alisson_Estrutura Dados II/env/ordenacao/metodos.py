@@ -1,5 +1,5 @@
 def intercala(inicio, meio, fim, lista):
-    print (f'inicio= {inicio}, meio= {meio}, fim= {fim}')
+    #print (f'inicio= {inicio}, meio= {meio}, fim= {fim}')
     w_lista = []
     i = inicio
     j = meio
@@ -40,7 +40,10 @@ def merge_sort(inicio, fim, lista):
 if __name__ == "__main__":
     valores = [9, 5, 7, 4, 6, 8]
     tamanho_lista = len(valores)
+    print ("Lista Desordenada")
+    print (valores)
     merge_sort(0, tamanho_lista, valores )
+    print ("Lista  Ordenada")
     print (valores)
     
 
