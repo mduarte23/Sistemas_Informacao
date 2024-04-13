@@ -31,6 +31,7 @@ def lista(json):
         frequencia.append(qtd) #cria uma lista das frequencias
     return periodo, frequencia #devolve duas listas em 2 variaveis diferentes
 
+#selection sort
 def lista_crescente(json):
     periodo, frequencia = lista(json)
     print (periodo)
