@@ -43,17 +43,110 @@ def selection_sort(lista):
             if lista[menor] > lista[j]:
                 menor = j
             lista[i], lista[menor]= lista[menor], lista[i]
+    #devolve a lista ordenada
     return lista
     
 #funçao para ordenar a lista por ordem alfabetica pelo bublle sort
 def bublle_sort(lista):
     j = len(lista) - 1
     while j > 0:
+        #percorre a lista jogando o maior valor para o ultimo
         for i in range (0, j):
             if lista[i] > lista[i+1]:
+                #faz a troca das posições 
                 lista[i] , lista[i+1] = lista[i+1], lista[i]
-            j += 1
+        #diminui o tamanho do proximo for
+        j -= 1
+    #devolve a lista ordenada
+    return lista
+
+def insertion_sort(lista):
+    #percorre a lista pegando o i como referencia e j como chave de troca
+    for i in range (1, len(lista)):
+        chave = lista[i]
+        j = i - 1
+        #compara se o valores estão ordenados e faz a troca usando a variavel auxiliar
+        while j >= 0 and lista[j] > chave:
+            lista [j + 1] = lista[j]
+            j -= 1
+        lista[j + 1] = chave
+    #devolve a lista ordenada
     return lista
    
+def ordena(esquerda, direita):
+    print('Esquerda')
+    print (esquerda)
+    print ('Direita')
+    print (direita)
+    w_lista = []
+    i = j = 0
+
+    while i < len(esquerda) and j < len(direita):
+        if esquerda[i] < direita[j]:
+            w_lista.append(esquerda[i])
+            i += 1
+            
+        else:
+            w_lista.append(direita[j])
+            j += 1
+            #print ("ordenando ")
+            #print (w_lista)
+    
+
+    w_lista.extend(esquerda[i:])
+    w_lista.extend(direita[j:])
+    print (w_lista)
+
+    return w_lista
+
+    
+
+def merge_sort(lista):
+    #retorna a lista se ela for vazia ou se tiver só um item
+    if len(lista) <= 1:
+        return lista
+    #divide a lista ate ficar do tamanho 1 para usar a função ordena
+    meio = len(lista)//2
+    esquerda = lista[:meio]
+    direita = lista[meio:]
+    esquerda = merge_sort(esquerda)
+    print (esquerda)
+    direita = merge_sort(direita)
+    print (direita)
 
 
+    return ordena(esquerda, direita)
+
+def quick_sort(lista):
+    quickSortOrdena(lista, 0, len(lista)-1)
+    return lista
+
+def quickSortOrdena(lista, esq, dir):
+    if esq < dir:
+        indice, lista = particao(lista, esq, dir)
+        quickSortOrdena(lista, esq, indice-1)
+        quickSortOrdena(lista, indice+1, dir)
+    return lista
+
+def particao (lista, esq, dir):
+    pivo = lista[esq]
+    #particionamento
+    i = esq
+    j = dir
+    while i <= j:
+        #Encontrar elemento maior que o pivo
+        while i <= dir and lista[i] <= pivo:
+            i += 1
+            
+        while j >= esq and  lista[j] > pivo:
+            j -= 1
+            
+        if i <= j:
+            lista[i], lista[j] = lista[j], lista[i]
+
+     #posiciona o pivo no local correto   
+
+    lista[esq], lista[j] = lista[j], lista[esq]
+
+    #retornar o indice do pivo
+    return j,lista
