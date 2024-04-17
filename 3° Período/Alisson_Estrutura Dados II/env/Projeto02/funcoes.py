@@ -37,14 +37,16 @@ def nomes_cidades(lista):
 
 #função para ordenar a lista por ordem alfabetica pelo selection sort
 def selection_sort(lista):
+    contador = 0
     for i in range (len(lista)):
         menor = i
         for j in range (i+1, len(lista)):
+            contador += 1
             if lista[menor] > lista[j]:
                 menor = j
             lista[i], lista[menor]= lista[menor], lista[i]
     #devolve a lista ordenada
-    return lista
+    return lista, contador
     
 #funçao para ordenar a lista por ordem alfabetica pelo bublle sort
 def bublle_sort(lista):
@@ -74,14 +76,12 @@ def insertion_sort(lista):
     return lista
    
 def ordena(esquerda, direita):
-    print('Esquerda')
-    print (esquerda)
-    print ('Direita')
-    print (direita)
+    contador = 0
     w_lista = []
     i = j = 0
 
     while i < len(esquerda) and j < len(direita):
+        contador += 1
         if esquerda[i] < direita[j]:
             w_lista.append(esquerda[i])
             i += 1

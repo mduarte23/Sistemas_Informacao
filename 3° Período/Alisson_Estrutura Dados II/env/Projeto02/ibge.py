@@ -13,12 +13,13 @@ def Selection_Sort():
         cidades = nomes_cidades(lista_cidades())
         #chama a função de ordençao selection sort
         inicio = time.time()
-        resposta = selection_sort(cidades)
+        resposta, contador = selection_sort(cidades)
         fim = time.time()
         retorno = {
-            "Algoritimo utilizado": "Selection Sort",
-            "Tempo execução": fim-inicio ,
-            "Lista de cidades": resposta 
+            "1-Algoritimo utilizado": "Selection Sort",
+            "2-Tempo execução": fim-inicio ,
+            "3-Numero de comparações ": contador, 
+            "4-Lista de cidades": resposta 
         }
         print (f'Tempo execução {fim-inicio}')
         return retorno
@@ -28,23 +29,31 @@ def Selection_Sort():
 @app.route("/bublle_sort")
 def Bublle_Sort():
     try:
-        lista = ['joao', 'maria', 'tiago', 'godofredo','marcelo', "carol", "aline",'zumira', 'leonardo']
+        #lista = ['joao', 'maria', 'tiago', 'godofredo','marcelo', "carol", "aline",'zumira', 'leonardo']
         #chama uma funçao passando outra funcao como parametro
-        #cidades = nomes_cidades(lista_cidades())
+        cidades = nomes_cidades(lista_cidades())
         #chama a função de ordençao selection sort
-        resposta = bublle_sort(lista)
-        return resposta
+        inicio = time.time()
+        resposta = bublle_sort(cidades)
+        fim = time.time()
+        retorno = {
+            "1-Algoritimo utilizado": "Selection Sort",
+            "2-Tempo execução": fim-inicio ,
+            "3-Lista de cidades": resposta 
+        }
+        print (fim-inicio)
+        return retorno
     except Exception as e:
         return f"Falha na rota /distritos_ordenados: {e}"
     
 @app.route("/insertion_sort")
 def Insertion_Sort():
     try:
-        lista = ['joao', 'maria', 'tiago', 'godofredo','marcelo', "carol", "aline",'zumira', 'leonardo']
+        #lista = ['joao', 'maria', 'tiago', 'godofredo','marcelo', "carol", "aline",'zumira', 'leonardo']
         #chama uma funçao passando outra funcao como parametro
-        #cidades = nomes_cidades(lista_cidades())
+        cidades = nomes_cidades(lista_cidades())
         #chama a função de ordençao selection sort
-        resposta = insertion_sort(lista)
+        resposta = insertion_sort(cidades)
         return resposta
     except Exception as e:
         return f"Falha na rota /distritos_ordenados: {e}"
@@ -53,11 +62,11 @@ def Insertion_Sort():
 def Merge_Sort():
     try:
         #lista = [9, 5, 7, 4, 6, 8]
-        lista = ['joao', 'maria', 'tiago', 'godofredo','marcelo', "carol", "aline",'zumira', 'leonardo']
+        #lista = ['joao', 'maria', 'tiago', 'godofredo','marcelo', "carol", "aline",'zumira', 'leonardo']
         #chama uma funçao passando outra funcao como parametro
-        #cidades = nomes_cidades(lista_cidades())
+        cidades = nomes_cidades(lista_cidades())
         #chama a função de ordençao selection sort
-        resposta = merge_sort(lista)
+        resposta = merge_sort(cidades)
         return resposta
     except Exception as e:
         return f"Falha na rota /distritos_ordenados: {e}"
@@ -66,11 +75,11 @@ def Merge_Sort():
 def Quick_Sort():
     try:
         #lista = [9, 5, 7, 4, 6, 8]
-        lista = ['joao', 'maria', 'tiago', 'godofredo','marcelo', "carol", "aline",'zumira', 'leonardo']
+        #lista = ['joao', 'maria', 'tiago', 'godofredo','marcelo', "carol", "aline",'zumira', 'leonardo']
         #chama uma funçao passando outra funcao como parametro
-        #cidades = nomes_cidades(lista_cidades())
+        cidades = nomes_cidades(lista_cidades())
         #chama a função de ordençao selection sort
-        resposta = quick_sort(lista)
+        resposta = quick_sort(cidades)
         return resposta
     except Exception as e:
         return f"Falha na rota /distritos_ordenados: {e}"
