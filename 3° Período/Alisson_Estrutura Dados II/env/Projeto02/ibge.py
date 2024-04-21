@@ -1,6 +1,6 @@
 from flask import Flask,request
 import time
-from funcoes import lista_cidades, nomes_cidades, selection_sort, bublle_sort, insertion_sort, merge_sort, quick_sort
+from funcoes import lista_cidades, nomes_cidades, selection_sort, bubble_sort, insertion_sort, merge_sort, quick_sort
 
 app = Flask(__name__)
 
@@ -24,17 +24,17 @@ def Selection_Sort():
     except Exception as e:
         return f"Falha na rota /selection_sort: {e}"
 
-@app.route("/bublle_sort")
-def Bublle_Sort():
+@app.route("/bubble_sort")
+def Bubble_Sort():
     try:
         #chama uma funçao passando outra funcao como parametro
         cidades = nomes_cidades(lista_cidades())
         #chama a função de ordençao bulle sort
         inicio = time.time()
-        resposta, contador = bublle_sort(cidades)
+        resposta, contador = bubble_sort(cidades)
         fim = time.time()
         retorno = {
-            "1-Algoritimo utilizado": "Bublle Sort",
+            "1-Algoritimo utilizado": "Bubble Sort",
             "2-Tempo execução": fim-inicio ,
             "3-Numero de comparações ": contador,
             "4-Lista de cidades": resposta 
@@ -42,7 +42,7 @@ def Bublle_Sort():
         
         return retorno
     except Exception as e:
-        return f"Falha na rota /bublle_sort: {e}"
+        return f"Falha na rota /bubble_sort: {e}"
     
 @app.route("/insertion_sort")
 def Insertion_Sort():

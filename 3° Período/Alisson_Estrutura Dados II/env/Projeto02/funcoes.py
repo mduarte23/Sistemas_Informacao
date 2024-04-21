@@ -48,8 +48,8 @@ def selection_sort(lista):
     #devolve a lista ordenada
     return lista, contador
     
-#funçao para ordenar a lista por ordem alfabetica pelo bublle sort
-def bublle_sort(lista):
+#funçao para ordenar a lista por ordem alfabetica pelo bubble sort
+def bubble_sort(lista):
     j = len(lista) - 1
     contador = 0
     while j > 0:
