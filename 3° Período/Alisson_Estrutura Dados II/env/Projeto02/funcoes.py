@@ -51,32 +51,36 @@ def selection_sort(lista):
 #funçao para ordenar a lista por ordem alfabetica pelo bublle sort
 def bublle_sort(lista):
     j = len(lista) - 1
+    contador = 0
     while j > 0:
         #percorre a lista jogando o maior valor para o ultimo
         for i in range (0, j):
+            contador += 1
             if lista[i] > lista[i+1]:
                 #faz a troca das posições 
                 lista[i] , lista[i+1] = lista[i+1], lista[i]
         #diminui o tamanho do proximo for
         j -= 1
     #devolve a lista ordenada
-    return lista
+    return lista, contador
 
+#funçao para ordenar a lista por ordem alfabetica pelo insertion sort
 def insertion_sort(lista):
+    contador = 0
     #percorre a lista pegando o i como referencia e j como chave de troca
     for i in range (1, len(lista)):
         chave = lista[i]
         j = i - 1
         #compara se o valores estão ordenados e faz a troca usando a variavel auxiliar
         while j >= 0 and lista[j] > chave:
+            contador += 1
             lista [j + 1] = lista[j]
             j -= 1
         lista[j + 1] = chave
     #devolve a lista ordenada
-    return lista
+    return lista, contador
    
-def ordena(esquerda, direita):
-    contador = 0
+def ordena(esquerda, direita, contador):   
     w_lista = []
     i = j = 0
 
@@ -89,46 +93,49 @@ def ordena(esquerda, direita):
         else:
             w_lista.append(direita[j])
             j += 1
-            #print ("ordenando ")
-            #print (w_lista)
     
-
     w_lista.extend(esquerda[i:])
     w_lista.extend(direita[j:])
-    print (w_lista)
 
-    return w_lista
-
-    
+    return w_lista, contador
 
 def merge_sort(lista):
+    contador = 0
     #retorna a lista se ela for vazia ou se tiver só um item
     if len(lista) <= 1:
-        return lista
+        return lista, contador
     #divide a lista ate ficar do tamanho 1 para usar a função ordena
     meio = len(lista)//2
+    #monta a lista do inicio ate o meio
     esquerda = lista[:meio]
+    #monta a lista do meio ate o fim
     direita = lista[meio:]
-    esquerda = merge_sort(esquerda)
-    print (esquerda)
-    direita = merge_sort(direita)
-    print (direita)
-
-
-    return ordena(esquerda, direita)
+    #chamada recursiva passando as novas listas criadas
+    esquerda, contador_esquerda = merge_sort(esquerda)
+    direita, contador_direita = merge_sort(direita)
+    #faz a soma das contagens de comparacoes
+    contador = contador_esquerda + contador_direita
+   
+    resposta, contador = ordena(esquerda, direita, contador)
+    return resposta, contador
 
 def quick_sort(lista):
-    quickSortOrdena(lista, 0, len(lista)-1)
-    return lista
+    ordenacao, contador = quickSortOrdena(lista, 0, len(lista)-1)
+    return ordenacao, contador
 
 def quickSortOrdena(lista, esq, dir):
+    contador = 0
     if esq < dir:
-        indice, lista = particao(lista, esq, dir)
-        quickSortOrdena(lista, esq, indice-1)
-        quickSortOrdena(lista, indice+1, dir)
-    return lista
+        indice, lista, contador_esq = particao(lista, esq, dir, contador)
+        #faz a soma das contagens
+        contador += contador_esq
+        #contador somando todas as chamadas recursivas
+        contador += quickSortOrdena(lista, esq, indice-1)[1]
+        contador += quickSortOrdena(lista, indice+1, dir)[1]
+    return lista, contador
 
-def particao (lista, esq, dir):
+def particao (lista, esq, dir, contador):
+
     pivo = lista[esq]
     #particionamento
     i = esq
@@ -137,16 +144,15 @@ def particao (lista, esq, dir):
         #Encontrar elemento maior que o pivo
         while i <= dir and lista[i] <= pivo:
             i += 1
-            
+            contador += 1
         while j >= esq and  lista[j] > pivo:
             j -= 1
-            
+            contador += 1
         if i <= j:
             lista[i], lista[j] = lista[j], lista[i]
 
      #posiciona o pivo no local correto   
-
     lista[esq], lista[j] = lista[j], lista[esq]
 
-    #retornar o indice do pivo
-    return j,lista
+    #retornar o indice do pivo e a contagem
+    return j,lista, contador
