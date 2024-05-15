@@ -18,29 +18,29 @@ class BancoDados:
     
     def inserir_cliente(self, cliente):
         self.cursor.execute("""
-            INSERT INT clientes (nome, email, telefone),
+            INSERT INTO clientes (nome, email, telefone)
             VALUES (?,?,?)
         """, (cliente.nome, cliente.email, cliente.telefone))
         self.conexao.commit()
 
     def listar_clientes(self):
         self.cursor.execute("""
-            SELECT id, nome, email, telefone, FROM clientes            
+            SELECT id, nome, email, telefone FROM clientes            
         """)
         return self.cursor.fetchall()
     
-    def atualizar_cliente(self, cliente):
+    def atualizar_cliente(self, cliente, cliente_id):
         self.cursor.execute("""
             UPDATE clientes SET
-                nome = ?
+                nome = ?,
                 email = ?,
                 telefone = ?
             WHERE id = ?
-        """, (cliente.nome, cliente.email, cliente.telefone, cliente.id))
+        """, (cliente.nome, cliente.email, cliente.telefone, cliente_id))
         self.conexao.commit()
 
     def deletar_clientes(self, cliente_id):
         self.cursor.execute("""
             DELETE FROM clientes WHERE id = ?
-        """, (cliente_id))
+        """, (cliente_id,))
         self.conexao.commit()
