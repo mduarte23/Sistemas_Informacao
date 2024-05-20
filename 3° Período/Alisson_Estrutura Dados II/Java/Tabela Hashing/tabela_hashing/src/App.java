@@ -1,5 +1,6 @@
 
 import java.util.LinkedList;
+import java.util.Random;
 
 public class App {
     static LinkedList tabela[] = new LinkedList[26];
@@ -26,24 +27,35 @@ public class App {
         }
         tabela[categoria].add(valor);
         //System.out.println(tabela[categoria]);
+        //imprimir();
     }
 
-
-
-    public static void main(String[] args) {
-        System.out.println("Olá");
-        
-
-        adiciona("Astrogildo");
-        adiciona ("Silvio Santos");
-        adiciona("Zuleide");
-        adiciona ("adolfo");
-        //imprimir toda a tabela
+    public static void imprimir(){
+        //funçao para imprimir toda a tabela        
         for (LinkedList lista : tabela) {
-            
             System.out.println(lista);
         }
+    }
+
+    public static void gerarNomes (int qtdPalavras){
+        //gera palavras aleatorias
+        Random rnd = new Random();
+        for (int i = 0; i < qtdPalavras; i++) {
+            int qtdLetras = rnd.nextInt(3,9);
+            String palavra = "";
+            for (int j = 0; j < qtdLetras; j++) {
+                char letra = (char)(rnd.nextInt(97, 123));
+                palavra += letra;
+            }
+            adiciona(palavra);
+        }
         
+    }
+
+    public static void main(String[] args) {
+        //System.out.println("Olá");
+        gerarNomes(200);  
+        imprimir();     
     }
 }
 
