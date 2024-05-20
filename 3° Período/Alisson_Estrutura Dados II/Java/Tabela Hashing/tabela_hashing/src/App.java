@@ -31,10 +31,16 @@ public class App {
     }
 
     public static void imprimir(){
-        //funçao para imprimir toda a tabela        
-        for (LinkedList lista : tabela) {
-            System.out.println(lista);
+        //funçao para imprimir toda a tabela
+        for (int i = 0; i < tabela.length; i++) {
+            LinkedList lista = tabela[i];
+            int total = lista.size();
+            System.out.println(i + " total: "+ total + " -> " + lista);
         }
+        
+        //for (LinkedList lista : tabela) {
+         //   System.out.println(lista);
+       // }
     }
 
     public static void gerarNomes (int qtdPalavras){
@@ -54,7 +60,7 @@ public class App {
 
     public static void main(String[] args) {
         //System.out.println("Olá");
-        gerarNomes(200);  
+        gerarNomes(500);  
         imprimir();     
     }
 }
