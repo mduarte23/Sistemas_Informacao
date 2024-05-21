@@ -1,10 +1,11 @@
 
 import java.util.LinkedList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class App {
     static LinkedList tabela[] = new LinkedList[26];
-
+    static Scanner input = new Scanner(System.in);
 
 
     //def hash() (define funçao)
@@ -34,14 +35,16 @@ public class App {
         //funçao para imprimir toda a tabela
         for (int i = 0; i < tabela.length; i++) {
             LinkedList lista = tabela[i];
-            int total = lista.size();
-            System.out.println(i + " total: "+ total + " -> " + lista);
-        }
-        
-        //for (LinkedList lista : tabela) {
-         //   System.out.println(lista);
-       // }
+            if (lista != null){
+                int total = lista.size();
+                System.out.println(i + " total: "+ total + " -> " + lista);
+            }else{
+                System.out.println(i + " total: "+ 0 + " -> " + lista);
+            }
+        }    
     }
+
+
 
     public static void gerarNomes (int qtdPalavras){
         //gera palavras aleatorias
@@ -58,10 +61,44 @@ public class App {
         
     }
 
+    public static int menu(){
+       
+        System.out.println("*****MENU*****");
+        System.out.println("1- Buscar");
+        System.out.println("2- Sair");
+        System.out.print(">>>>");
+        return input.nextInt();
+    }
+
+    public static void busca(String palavra){
+        int categoria = hash(palavra);
+        System.out.println("*****BUSCA*****");
+        System.out.println("Categoria " + categoria);
+        LinkedList lista = tabela[categoria];
+        if (lista.contains(palavra)){
+            System.out.println(palavra + " está presente.");
+        }else{
+            System.out.println(palavra + " não está presente");
+        }
+    }
+
     public static void main(String[] args) {
         //System.out.println("Olá");
-        gerarNomes(500);  
-        imprimir();     
+        gerarNomes(50000);  
+        imprimir();  
+        int op = 0;
+        do {
+            op = menu();
+            if (op == 1){
+                System.out.println("Digite a palavra a ser procurada: ");
+                String palavra = input.next();
+                busca(palavra);
+            }else if((op != 2) && (op != 1)){
+                System.out.println("Opção invalida");
+            }else{
+                System.out.println("Saindo...");
+            }
+        } while (op != 2);   
     }
 }
 
