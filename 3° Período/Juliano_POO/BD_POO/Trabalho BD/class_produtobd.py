@@ -36,7 +36,7 @@ class BancoDados:
                 preco = %s,
                 quantidade = %s
             WHERE id = %s
-        """, (produto.nome, produto.email, produto.telefone, produto_id))
+        """, (produto.nome, produto.preco, produto.quantidade, produto_id))
         self.conexao.commit()
 
     def deletar_produto(self, produto_id):
