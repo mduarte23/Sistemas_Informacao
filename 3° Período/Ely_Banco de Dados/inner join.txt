@@ -1,0 +1,22 @@
+
+SELECT a.nome, r.nome_raca, e.nome_especie FROM animais a
+INNER JOIN raca r ON a.raca = r.cod_raca
+INNER JOIN especie e ON r.cod_especie
+
+
+#retorne o nome dos proprietarios, telefone, nome dos animais e nome da raça. Mostre apenas
+#animais da raça vira-lata
+
+SELECT p.nome, p.telefone, a.nome, r.nome_raca FROM animais a
+INNER JOIN proprietario p ON p.cod_prop = a.proprietario
+INNER JOIN raca r ON r.cod_raca = a.raca
+WHERE r.nome_raca = 'vira-lata'
+
+#cidade e estado em que tenham animais cadastrados com o nome da especia "gato"
+# DISTINCT mostra resultado apenas uma vez se repetir
+SELECT DISTINCT  c.cidade, c.estado FROM cidade c
+INNER JOIN proprientario p ON c.cod_cidade = p.cidade
+INNER JOIN animais a ON p.cod_prop = a.proprietario
+INNER JOIN raca r ON r.cod_raca = a.raca
+INNER JOIN especie e ON e.cod_especie = r.especie
+WHERE e.nome_especie = 'gato'
