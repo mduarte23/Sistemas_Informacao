@@ -6,7 +6,7 @@ public class Cliente {
     private String cpf;
     private double saldo;
 
-    //Obriga a passar o cpf obrigatoriamente
+    //Obriga a passar o cpf obrigatoriamente no construtor
     public Cliente (String cpf){
         //this.cpf = cpf da variavel
         //cpf = parametro do construtor
