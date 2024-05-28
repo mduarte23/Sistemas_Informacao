@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 public class Cliente {
     private String nome;
     private String cpf;
@@ -17,7 +20,14 @@ public class Cliente {
 
     //não permite que o cpf seja alterado de fora da aplicaçao (outro arquivo)
     private void setCpf(String cpf){
-        this.cpf = cpf;
+        if (Util.validarCpf(cpf)){
+            this.cpf = cpf;
+        }else{
+            System.out.println("CPF Inválido" + cpf);
+            //cria uma janela de alerta com input
+            String novoCPF = JOptionPane.showInputDialog(null, "Digite novo CPF");
+            this.setCpf(novoCPF);
+        }
     }
 
     public String getCpf(){
