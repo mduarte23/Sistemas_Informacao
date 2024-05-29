@@ -1,0 +1,32 @@
+USE oficina
+
+SELECT * FROM fornecedor
+
+SELECT * FROM marca
+
+SELECT * FROM peca
+
+SELECT SUM(valor), MIN(valor), MAX(valor), AVG(valor), COUNT(*) FROM peca
+
+#1-qual a média de preco dos produtos da marca "Fabof"?
+
+SELECT AVG(valor) FROM peca p
+INNER JOIN marca m ON p.id_marca = m.id_marca
+WHERE m.nome = 'Fabof'
+
+#2- Qual a quantidade de peças por marca (mostre o nome da marca)
+
+SELECT m.nome,  COUNT(*) FROM peca p
+INNER JOIN marca m ON p.id_marca = m.id_marca
+GROUP BY m.nome
+
+#3- qual a quantidade de peças média de preco, maior preco, menor preco e soma de todos os preços por cada fornecedor
+
+SELECT f.razao_social, COUNT(*), AVG (valor), MAX(valor),MIN(valor), SUM(valor) FROM peca p
+INNER JOIN fornecedor f ON f.id_forn = p.id_forn
+GROUP BY f.razao_social
+
+#4- qual a media de preco das pecas que tem preco aior que 300,00
+
+SELECT AVG(valor) FROM peca
+WHERE valor > 300
