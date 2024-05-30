@@ -1,0 +1,160 @@
+CREATE DATABASE trabalho1
+
+USE trabalho1
+
+CREATE TABLE marca(
+	cod_marca INT PRIMARY KEY AUTO_INCREMENT,
+	nome_marca VARCHAR(50)
+);
+
+CREATE TABLE produto(
+	cod_prod INT PRIMARY KEY AUTO_INCREMENT,
+	descricao VARCHAR(50),
+	preco FLOAT,
+	cod_marca INT,
+	
+	CONSTRAINT fk_marca
+	FOREIGN KEY (cod_marca)
+	REFERENCES marca(cod_marca)
+);
+
+CREATE TABLE cidade(
+	cod_cidade INT PRIMARY KEY AUTO_INCREMENT,
+	cidade VARCHAR(100),
+	estado CHAR(2)
+);
+
+CREATE TABLE cliente(
+	cod_cli INT PRIMARY KEY AUTO_INCREMENT,
+	nome VARCHAR(50),
+	telefone VARCHAR(50),
+	cod_cidade INT,
+	
+	CONSTRAINT fk_cidade
+	FOREIGN KEY (cod_cidade)
+	REFERENCES cidade(cod_cidade)
+);
+
+CREATE TABLE venda(
+	num_nota INT PRIMARY KEY,
+	DATA DATE,
+	quantidade INT,
+	cod_prod INT,
+	cod_cli INT,
+	
+	CONSTRAINT fk_produto
+	FOREIGN KEY (cod_prod)
+	REFERENCES produto(cod_prod),
+	
+	CONSTRAINT fk_cliente
+	FOREIGN KEY (cod_cli)
+	REFERENCES cliente(cod_cli)	
+);
+
+INSERT INTO marca(nome_marca)
+VALUES ('Disney')
+
+INSERT INTO marca(nome_marca)
+VALUES ('Marvel')
+
+INSERT INTO marca(nome_marca)
+VALUES ('DC')
+
+INSERT INTO marca(nome_marca)
+VALUES ('Warner Bros')
+
+SELECT * FROM marca
+
+INSERT INTO produto(descricao, preco, cod_marca)
+VALUES ('Homem de Ferro', 789.99, 2)
+
+INSERT INTO produto(descricao, preco, cod_marca)
+VALUES ('Batman', 549.99, 3)
+
+INSERT INTO produto(descricao, preco, cod_marca)
+VALUES ('Mikey', 999.99, 1)
+
+INSERT INTO produto(descricao, preco, cod_marca)
+VALUES ('Pernalonga', 899.99, 4)
+
+SELECT * FROM produto
+
+INSERT INTO cidade(cidade, estado)
+VALUES ('São Sebastião do Paraiso', 'MG')
+
+INSERT INTO cidade(cidade, estado)
+VALUES ('Massachusetts', 'US')
+
+INSERT INTO cidade(cidade, estado)
+VALUES ('California', 'US')
+
+INSERT INTO cidade(cidade, estado)
+VALUES ('Ribeirão Preto', 'SP')
+
+SELECT * FROM cidade
+
+INSERT INTO cliente(nome, telefone, cod_cidade)
+VALUES ('Godofredo', '16987412536', 3)
+
+INSERT INTO cliente(nome, telefone, cod_cidade)
+VALUES ('Sebastian', '21784521369', 2)
+
+INSERT INTO cliente(nome, telefone, cod_cidade)
+VALUES ('Antonio', '3521478596', 1)
+
+INSERT INTO cliente(nome, telefone, cod_cidade)
+VALUES ('Esteabn', '784596315', 4)
+
+SELECT * FROM cliente
+
+INSERT INTO venda(num_nota, DATA, quantidade, cod_prod, cod_cli)
+VALUES(147, '2023-05-14', 4, 2, 1)
+
+INSERT INTO venda(num_nota, DATA, quantidade, cod_prod, cod_cli)
+VALUES(473, '2023-04-01', 3, 1, 2)
+
+INSERT INTO venda(num_nota, DATA, quantidade, cod_prod, cod_cli)
+VALUES(558, '2023-05-29', 8, 4, 3)
+
+INSERT INTO venda(num_nota, DATA, quantidade, cod_prod, cod_cli)
+VALUES(285, '2023-11-30', 6, 3, 4)
+
+SELECT * FROM venda
+
+#1- Qual é o maior, o menor e a média de preço dos produtos?
+
+SELECT MAX(preco), MIN(preco), AVG(preco) FROM produto
+
+#2- Qual a soma do preço dos produtos vendidos da marca 'Disney'?
+
+SELECT SUM(p.preco * v.quantidade) FROM produto p
+INNER JOIN marca m ON m.cod_marca = p.cod_marca
+INNER JOIN venda v ON v.cod_prod = p.cod_prod
+WHERE m.nome_marca = 'Disney'
+
+#3- Qual a quantidade de clientes cadastrados por cidade (agrupe pela cidade e estado)
+
+SELECT ci.cidade, ci.estado, COUNT(*) FROM cidade ci
+INNER JOIN cliente cd ON cd.cod_cidade = ci.cod_cidade
+GROUP BY ci.cidade, ci.estado
+
+#4- Qual a quantidade média de produtos vendidos para o estado de 'US'
+
+SELECT AVG(v.quantidade) FROM venda v
+INNER JOIN cliente c ON c.cod_cli = v.cod_cli
+INNER JOIN cidade ci ON ci.cod_cidade = c.cod_cidade
+WHERE ci.estado = 'US'
+
+#5- Considere que o valor total da venda é formado pela multiplicaçao da quantidade * preço.
+# Mostre a soma do valor total das vendas do mes 5 de 2023
+
+SELECT SUM(p.preco * v.quantidade) FROM venda v
+INNER JOIN produto p ON v.cod_prod = p.cod_prod
+WHERE v.data LIKE '2023-05-%'
+
+#6- Mostre a soma do valor total das vendas agrupando pelo nome da marca
+
+SELECT m.nome_marca, SUM(v.quantidade * p.preco) FROM marca m
+INNER JOIN produto p ON m.cod_marca = p.cod_marca
+INNER JOIN venda v ON p.cod_prod = v.cod_prod
+GROUP BY m.nome_marca
