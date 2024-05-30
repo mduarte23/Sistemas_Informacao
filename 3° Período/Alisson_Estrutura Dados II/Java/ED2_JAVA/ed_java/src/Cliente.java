@@ -28,6 +28,7 @@ public class Cliente {
             String novoCPF = JOptionPane.showInputDialog(null, "Digite novo CPF");
             this.setCpf(novoCPF);
         }
+        
     }
 
     public String getCpf(){

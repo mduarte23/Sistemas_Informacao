@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class AppTeste {
     public static void main(String[] args) {
-        Cliente jose = new Cliente("13");
+        Cliente jose = new Cliente("134");
         Cliente maria = new Cliente("354");
         //alterando o objeto jose
         jose.setNome("Jose");
