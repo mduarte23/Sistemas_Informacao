@@ -11,13 +11,14 @@ class Cafe:
             exit()
         if orcamento < 5:
             print("Desculpe, você não tem dinheiro")
+            exit()
 
     def get_change(self, orcamento):
         return orcamento - self.preco
     
-    def vender(self, orcameto):
+    def vender(self, orcamento):
         self.check_orcamento(orcamento)
-        if orcameto >= self.preco:
+        if orcamento >= self.preco:
             print(f'Você pode comprar o {self.nome} café')
             if orcamento == self.preco:
                 print ("Valor exato")

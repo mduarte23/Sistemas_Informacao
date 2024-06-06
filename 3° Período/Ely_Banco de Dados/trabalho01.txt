@@ -63,6 +63,10 @@ VALUES ('DC')
 INSERT INTO marca(nome_marca)
 VALUES ('Warner Bros')
 
+INSERT INTO marca(nome_marca)
+VALUES ('Universal')
+
+
 SELECT * FROM marca
 
 INSERT INTO produto(descricao, preco, cod_marca)
@@ -105,6 +109,9 @@ VALUES ('Antonio', '3521478596', 1)
 INSERT INTO cliente(nome, telefone, cod_cidade)
 VALUES ('Esteabn', '784596315', 4)
 
+INSERT INTO cliente(nome, telefone, cod_cidade)
+VALUES ('Joaquin', '774128963245', 4)
+
 SELECT * FROM cliente
 
 INSERT INTO venda(num_nota, DATA, quantidade, cod_prod, cod_cli)
@@ -119,7 +126,66 @@ VALUES(558, '2023-05-29', 8, 4, 3)
 INSERT INTO venda(num_nota, DATA, quantidade, cod_prod, cod_cli)
 VALUES(285, '2023-11-30', 6, 3, 4)
 
+iNSERT INTO venda(num_nota, DATA, quantidade, cod_prod, cod_cli)
+VALUES(559, '2023-05-09', 4, 4, 1)
+
 SELECT * FROM venda
+
+#1-Consulta que mostre o nome de todos os produtos e o nome das marcas relacionadas aos produtos, 
+#apenas dos produtos que possuem marcas
+
+SELECT p.descricao, m.nome_marca FROM produto p
+INNER JOIN marca m ON m.cod_marca = p.cod_marca
+
+
+#2- Consulta que permita mostrar a data de vendas, nome e preco dos produtos vendidos relacionados a estas vendas
+
+SELECT v.data, p.descricao, p.preco FROM produto p
+INNER JOIN venda v ON p.cod_prod = v.cod_prod
+
+
+#3-Consulta que permita ver o numero das vendas, nome do produto relacionado às vendas e nome da marca relacionada 
+#ao produto vendido. Deve mostrar apenas vendas de produtos da marca ‘Disney’
+
+SELECT v.num_nota, p.descricao, m.nome_marca FROM venda v
+INNER JOIN produto p ON p.cod_prod = v.cod_prod
+INNER JOIN marca m ON m.cod_marca = p.cod_prod
+WHERE m.nome_marca = 'Disney'
+
+
+#4-Consulta que permita mostrar todas as vendas do mes de maio de 2023, mostrando data da venda, 
+#nome do cliente comprador e descricao do produto vendido
+
+SELECT v.data, c.nome, p.descricao FROM produto p
+INNER JOIN venda v ON p.cod_prod = v.cod_prod
+INNER JOIN cliente c ON c.cod_cli = v.cod_cli
+WHERE DATA >= '2023-05-01' AND DATA <= '2023-05-31'
+
+
+#5-Consulta que permita ver a data e número das vendas e nome dos clientes. 
+#Deve mostrar apenas as vendas com data entre 08/05/2023 e 09/05/2023
+
+SELECT v.data, v.num_nota, c.nome FROM produto p
+INNER JOIN venda v ON p.cod_prod = v.cod_prod
+INNER JOIN cliente c ON  v.cod_cli = c.cod_cli
+WHERE DATA >= '2023-05-08' AND DATA <= '2023-05-09'
+
+
+
+#6-Consulta que mostre o número e a data de todas as vendas feitas para clientes do estado ‘US’
+
+SELECT v.num_nota, v.data, c.nome, cd.estado FROM venda v
+INNER JOIN cliente c ON c.cod_cli = v.cod_cli
+INNER JOIN cidade cd ON c.cod_cidade = cd.cod_cidade
+WHERE cd.estado = 'US'
+
+
+#7- Mostre o nome de todas as marcas e a data de venda destas marcas, mostrando inclusive marcas que nunca foram vendidas.
+
+SELECT m.nome_marca, v.data FROM marca m
+LEFT JOIN produto p ON m.cod_marca = p.cod_marca
+LEFT JOIN venda v ON p.cod_prod = v.cod_prod
+ 
 
 #1- Qual é o maior, o menor e a média de preço dos produtos?
 
@@ -150,7 +216,7 @@ WHERE ci.estado = 'US'
 
 SELECT SUM(p.preco * v.quantidade) FROM venda v
 INNER JOIN produto p ON v.cod_prod = p.cod_prod
-WHERE v.data LIKE '2023-05-%'
+WHERE v.data >= '2023-05-01' AND v.data <= '2023-05-31'
 
 #6- Mostre a soma do valor total das vendas agrupando pelo nome da marca
 
@@ -158,59 +224,46 @@ SELECT m.nome_marca, SUM(v.quantidade * p.preco) FROM marca m
 INNER JOIN produto p ON m.cod_marca = p.cod_marca
 INNER JOIN venda v ON p.cod_prod = v.cod_prod
 GROUP BY m.nome_marca
+ 
+ 
+#7 Quantos produtos tenho cadastrado por marca?
 
-#1-Consulta que mostre o nome de todos os produtos e o nome das marcas relacionadas aos produtos, 
-#apenas dos produtos que possuem marcas
+SELECT m.nome_marca, p.descricao, COUNT(p.descricao) qtd_prod FROM  marca m 
+left  JOIN produto p ON m.cod_marca = p.cod_prod
+GROUP BY m.nome_marca, p.descricao
 
-SELECT p.descricao, m.nome_marca FROM produto p
-INNER JOIN marca m ON m.cod_marca = p.cod_marca
-GROUP BY p.descricao, m.nome_marca
 
-#2- Consulta que permita mostrar a data de vendas, nome e preco dos produtos vendidos relacionados a estas vendas
+#8 Mostre quais são as cidades que tem mais de 2 clientes cadastrados
 
-SELECT v.data, p.descricao, p.preco FROM produto p
+SELECT c.cidade, cl.cod_cidade FROM cidade c
+INNER JOIN cliente cl ON c.cod_cidade = cl.cod_cidade
+GROUP BY c.cidade, cl.cod_cidade
+HAVING COUNT(cl.cod_cidade) >= 2
+
+#9 qual a media de preco dos produtos vendidos por cidade?
+
+SELECT cd.cidade, AVG(p.preco) FROM produto p
 INNER JOIN venda v ON p.cod_prod = v.cod_prod
-GROUP BY v.`DATA`, p.descricao, p.preco
+INNER JOIN cliente c  ON c.cod_cli = v.cod_cli
+INNER JOIN cidade cd ON cd.cod_cidade = c.cod_cidade
+GROUP BY cd.cidade
 
-#3-Consulta que permita ver o numero das vendas, nome do produto relacionado às vendas e nome da marca relacionada 
-#ao produto vendido. Deve mostrar apenas vendas de produtos da marca ‘Disney’
+#10 Qual o preco do produto mais barato e o preco do produto mais caro que cada cliente comprou?
 
-SELECT v.num_nota, p.descricao, m.nome_marca FROM venda v
-INNER JOIN produto p ON p.cod_prod = v.cod_prod
-INNER JOIN marca m ON m.cod_marca = p.cod_prod
-WHERE m.nome_marca = 'Disney'
-GROUP BY v.num_nota, p.descricao, m.nome_marca
-
-#4-Consulta que permita mostrar todas as vendas do mes de maio de 2023, mostrando data da venda, 
-#nome do cliente comprador e descricao do produto vendido
-
-SELECT v.data, c.nome, p.descricao FROM produto p
+SELECT c.nome, MIN(p.preco), MAX(p.preco) FROM produto p
 INNER JOIN venda v ON p.cod_prod = v.cod_prod
 INNER JOIN cliente c ON c.cod_cli = v.cod_cli
-WHERE DATA >= '2023-05-01' AND DATA <= '2023-05-31'
-GROUP BY v.data, c.nome, p.descricao
+GROUP BY c.nome 
 
-#5-Consulta que permita ver a data e número das vendas e nome dos clientes. 
-#Deve mostrar apenas as vendas com data entre 08/05/2023 e 09/05/2023
+#11 Mostre o nome, telefone e o valor total dos produtos que o cliente comprou, mostrando apenas aqueles clientes do estado 
+#"US" que tiveram um total de produtos comprados maior que 100,00.
+ 
+ SELECT c.nome, c.telefone, SUM(p.preco * v.quantidade) FROM cliente c
+ INNER JOIN venda v ON c.cod_cli = v.cod_cli
+ INNER JOIN produto p ON v.cod_prod = p.cod_prod
+ INNER JOIN cidade cd ON c.cod_cidade = cd.cod_cidade
+ WHERE cd.estado = 'US'
+ HAVING SUM(p.preco * v.quantidade) > 100
+ 
 
-SELECT v.data, v.num_nota, c.nome FROM produto p
-INNER JOIN venda v ON p.cod_prod = v.cod_prod
-INNER JOIN cliente c ON  v.cod_cli = c.cod_cli
-WHERE DATA >= '2023-05-08' AND DATA <= '2023-05-09'
-GROUP BY v.data, v.num_nota, c.nome
 
-
-#6-Consulta que mostre o número e a data de todas as vendas feitas para clientes do estado ‘US’
-
-SELECT v.num_nota, v.data, c.nome, cd.estado FROM venda v
-INNER JOIN cliente c ON c.cod_cli = v.cod_cli
-INNER JOIN cidade cd ON c.cod_cidade = cd.cod_cidade
-WHERE cd.estado = 'US'
-GROUP BY v.num_nota, v.data, c.nome, cd.estado
-
-#7- Mostre o nome de todas as marcas e a data de venda destas marcas, mostrando inclusive marcas que nunca foram vendidas.
-
-SELECT m.nome_marca, v.data FROM marca m
-INNER JOIN produto p ON m.cod_marca = p.cod_marca
-INNER JOIN venda v ON p.cod_prod = v.cod_prod
-GROUP BY m.nome_marca, v.data
