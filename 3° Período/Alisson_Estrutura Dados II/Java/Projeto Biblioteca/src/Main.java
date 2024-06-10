@@ -1,6 +1,4 @@
-import java.awt.event.InputEvent;
-import java.util.Scanner;
-import java.awt.im.InputContext;
+//import java.util.Scanner;
 
 
 public class Main {
@@ -37,18 +35,24 @@ public class Main {
         bib.listarTodos();
 
 
-        int op = 0;
-        Scanner scanner = new Scanner(System.in);
-        do {     
-            op = Biblioteca.menu(scanner);
+        //int op = 0;
+        //Scanner scanner = new Scanner(System.in);
+        
+        /*do { 
+            int escolha = scanner.nextInt();    
+            op = menu();
+
             if (op == 1){
               String nome = scanner.next();
-              String autor;
-              int anoPublicacao;
+              String autor= scanner.next();
+              String anoPublicacao = scanner.next();
+
+              Livro nome = new Livro(nome);
+
 
             }
         } while (op != 5);
         
-
+        */
     }
 }

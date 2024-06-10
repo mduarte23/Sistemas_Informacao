@@ -47,7 +47,7 @@ public class Biblioteca {
             }
         }
     }
-
+/* 
     public static int menu(){
        
         System.out.println("*****MENU*****");
@@ -60,5 +60,5 @@ public class Biblioteca {
         return input.nextInt();
     }
 
-
+    */
 }
