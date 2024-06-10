@@ -2,9 +2,12 @@
 import java.util.LinkedList;
 import javax.sound.sampled.SourceDataLine;
 import javax.swing.text.html.FormView;
+import java.util.Scanner;
+
 
 public class Biblioteca {
     private LinkedList<Livro> dados;
+    static Scanner input = new Scanner(System.in);
 
     public Biblioteca(){
         dados = new LinkedList<Livro>();
@@ -44,5 +47,18 @@ public class Biblioteca {
             }
         }
     }
+
+    public static int menu(){
+       
+        System.out.println("*****MENU*****");
+        System.out.println("1- Inserir Livro");
+        System.out.println("2- Busque Livro por ID");
+        System.out.println("3- Remova Livro por ID");
+        System.out.println("4- Liste todos Livros");
+        System.out.println("5- Sair");
+        System.out.print(">>>>");
+        return input.nextInt();
+    }
+
 
 }

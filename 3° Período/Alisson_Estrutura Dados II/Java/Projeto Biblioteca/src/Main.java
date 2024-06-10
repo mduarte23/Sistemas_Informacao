@@ -1,5 +1,7 @@
+import java.awt.event.InputEvent;
+import java.util.Scanner;
+import java.awt.im.InputContext;
 
-import java.util.LinkedList;
 
 public class Main {
     public static void main(String[] args) {
@@ -33,5 +35,20 @@ public class Main {
         bib.remover(4);
 
         bib.listarTodos();
+
+
+        int op = 0;
+        Scanner scanner = new Scanner(System.in);
+        do {     
+            op = Biblioteca.menu(scanner);
+            if (op == 1){
+              String nome = scanner.next();
+              String autor;
+              int anoPublicacao;
+
+            }
+        } while (op != 5);
+        
+
     }
 }
