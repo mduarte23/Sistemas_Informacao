@@ -1,0 +1,22 @@
+CREATE DATABASE ED2;
+
+USE ED2;
+
+CREATE TABLE livro(
+	id_livro INT AUTO_INCREMENT PRIMARY KEY ,
+	titulo VARCHAR(50) NOT NULL,
+	autor VARCHAR(50) NOT NULL,
+	ano int NOT null
+);
+
+CREATE TABLE usuario(
+	id_usuario INT AUTO_INCREMENT PRIMARY KEY,
+	nome VARCHAR(50) NOT NULL,
+	email VARCHAR(50) NOT NULL
+);
+
+DROP TABLE livro
+
+SELECT * FROM livro
+
+SELECT * FROM usuario

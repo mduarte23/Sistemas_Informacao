@@ -51,8 +51,7 @@ public class MainDB {
             }else{   
                 System.out.println("Opção inválida. Tente novamente.");
                 break;
-            }
-                
+            }                
         }
     }
 }
