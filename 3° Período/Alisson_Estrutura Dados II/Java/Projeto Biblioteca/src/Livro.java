@@ -1,4 +1,6 @@
 public class Livro {
+
+    static String getContador;
     private int id;
     private String titulo;
     private String autor;
@@ -19,6 +21,9 @@ public class Livro {
         this.titulo = titulo;
     }
 
+    public int getContador(){
+        return  this.contador;
+    }
     
 
     public String getTitulo(){

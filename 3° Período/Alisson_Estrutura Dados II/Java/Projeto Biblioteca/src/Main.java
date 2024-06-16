@@ -8,6 +8,11 @@ public class Main {
         obj1.setAnoPublicacao(1995);
         //System.out.println(obj1);
 
+        int indice1 = Livro.getContador();
+        
+        String indice = "livro"+ Livro.getContador();
+        System.out.println(indice);
+
         Livro obj2 = new Livro("Magico de Oz");
         obj2.setAutor("Carlos Montenegro");
         obj2.setAnoPublicacao(1775);
