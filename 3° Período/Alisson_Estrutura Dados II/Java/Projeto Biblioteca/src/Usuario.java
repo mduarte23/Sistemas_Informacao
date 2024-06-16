@@ -1,5 +1,5 @@
 public class Usuario {
-    
+    static String getContadorUsuario;
     private int idUsuario;
     private String nome;
     private String email;

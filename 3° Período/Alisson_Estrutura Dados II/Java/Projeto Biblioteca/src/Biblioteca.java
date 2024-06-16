@@ -20,6 +20,7 @@ public class Biblioteca {
             System.out.println("Livro já inserido");
         }else{
             dados.add(livro);
+            System.out.println("Livro cadastrado com sucesso!");
         }
     }
 
@@ -49,20 +50,7 @@ public class Biblioteca {
             }
         }
     }
-/* 
-    public static int menu(){
-       
-        System.out.println("*****MENU*****");
-        System.out.println("1- Inserir Livro");
-        System.out.println("2- Busque Livro por ID");
-        System.out.println("3- Remova Livro por ID");
-        System.out.println("4- Liste todos Livros");
-        System.out.println("5- Sair");
-        System.out.print(">>>>");
-        return input.nextInt();
-    }
 
-    */
 
     public void inserirUsuario(Usuario usuario){
         if (dadosUsuarios.contains(usuario)){
