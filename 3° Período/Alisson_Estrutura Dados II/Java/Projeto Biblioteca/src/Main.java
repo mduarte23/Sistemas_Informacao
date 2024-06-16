@@ -9,6 +9,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Biblioteca bib = new Biblioteca();
         Biblioteca user = new Biblioteca();
+         
         while (true) { 
             System.out.println("-----MENU-----");
             System.out.println("1- Cadastro de livros:");
@@ -52,9 +53,9 @@ public class Main {
                     bib.remover(id);
                 }else if (opcao2 == 4){
                     bib.listarTodos(); 
-                }else if (opcao == 0){
+                }else if (opcao2 == 0){
                     System.out.println("Retornando...");
-                    return;
+                
                 }else{
                     System.out.println("Opcao inválida. Tente novamente.");
                 }
@@ -82,7 +83,7 @@ public class Main {
                     System.out.println("Digite o ID do usuário que deseja buscar:");
                     int id = scanner.nextInt();
 
-                    user.consultaID(id);
+                    user.consultaIDUsuario(id);
                 }else if (opcao2 == 3){
                     System.out.println("Digite o ID do usuário que deseja remover:");
                     int id = scanner.nextInt();
@@ -92,14 +93,21 @@ public class Main {
                     user.listarTodosUsuarios();
                 }else if (opcao2 == 0){
                     System.out.println("Retornando...");
-                    return;
+                    
                 }else{
                     System.out.println("Opcao inválida. Tente novamente.");
                 }
-            }
+            }else if  (opcao== 0){
+                System.out.println("Saindo...");
+                scanner.close();
+                return;
+            }else{
+                System.out.println("Opçcão inválida, tente novamente.");
+                }
         }
     }
 }
+
         /* 
 
         Livro obj1 = new Livro("Cronicas de Narnia");

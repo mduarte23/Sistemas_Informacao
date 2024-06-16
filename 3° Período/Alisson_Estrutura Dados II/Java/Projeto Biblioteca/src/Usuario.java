@@ -29,6 +29,7 @@ public class Usuario {
     }
 
     public int getId_Usuario(){
+        System.out.println(idUsuario);
         return this.idUsuario;
     }
 

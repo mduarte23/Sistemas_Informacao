@@ -82,7 +82,7 @@ public class Biblioteca {
         for (Usuario usuario : dadosUsuarios) {
             if (usuario.getId_Usuario() == id_usuario){
                 System.out.println("Usuário removido com sucesso");
-                dados.remove(usuario);
+                dadosUsuarios.remove(usuario);
             }
         }
     }
