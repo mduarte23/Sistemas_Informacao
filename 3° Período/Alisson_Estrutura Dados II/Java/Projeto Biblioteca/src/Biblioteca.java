@@ -7,10 +7,12 @@ import java.util.Scanner;
 
 public class Biblioteca {
     private LinkedList<Livro> dados;
+    private LinkedList<Usuario> dadosUsuarios;
     static Scanner input = new Scanner(System.in);
 
     public Biblioteca(){
         dados = new LinkedList<Livro>();
+        dadosUsuarios = new LinkedList<Usuario>();
     }
 
     public void inserir(Livro livro){
@@ -61,4 +63,39 @@ public class Biblioteca {
     }
 
     */
+
+    public void inserirUsuario(Usuario usuario){
+        if (dadosUsuarios.contains(usuario)){
+            System.out.println("Usuário já inserido");
+        }else{
+            dadosUsuarios.add(usuario);
+        }
+    }
+
+    public void listarTodosUsuarios(){
+        for (int i = 0; i < dadosUsuarios.size(); i++) {
+           System.out.println(dadosUsuarios.get(i));
+        }    
+    }
+
+    public Usuario consultaIDUsuario(int id_usuario){
+        for (Usuario usuario : dadosUsuarios) {
+            if (usuario.getId_Usuario() == id_usuario){
+                System.out.println("Usuário encontrado");
+                System.out.println(usuario);
+                return usuario;
+            }
+        }
+        System.out.println(id_usuario + " não está cadastrado");
+        return null;
+    }
+
+    public void removerUsuario(int id_usuario){
+        for (Usuario usuario : dadosUsuarios) {
+            if (usuario.getId_Usuario() == id_usuario){
+                System.out.println("Usuário removido com sucesso");
+                dados.remove(usuario);
+            }
+        }
+    }
 }

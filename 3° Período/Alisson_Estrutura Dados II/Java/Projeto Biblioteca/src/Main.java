@@ -8,10 +8,10 @@ public class Main {
         obj1.setAnoPublicacao(1995);
         //System.out.println(obj1);
 
-        int indice1 = Livro.getContador();
+        //int indice1 = Livro.getContador();
         
-        String indice = "livro"+ Livro.getContador();
-        System.out.println(indice);
+        //String indice = "livro"+ Livro.getContador();
+        //System.out.println(indice);
 
         Livro obj2 = new Livro("Magico de Oz");
         obj2.setAutor("Carlos Montenegro");
@@ -39,24 +39,33 @@ public class Main {
 
         bib.listarTodos();
 
-        //int op = 0;
-        //Scanner scanner = new Scanner(System.in);
+        Usuario user1 = new Usuario("Marcelo");
+        user1.setEmail("marcelo@hotmail.com");
+        //System.out.println(user1);
+
+        Usuario user2 = new Usuario("Alysson");
+        user2.setEmail("alysson@gmail.com");
+        //System.out.println(user2);
+
+        Usuario user3 = new Usuario("Ely");
+        user3.setEmail("ely@gmail.com");
+        //System.out.println(user3);
+
+        //instanciar biblioteca
+        Biblioteca user = new Biblioteca();
+        user.inserirUsuario(user1);
+        user.inserirUsuario(user2);
+        user.inserirUsuario(user3);
+        //System.out.println(bib);
+
+        user.listarTodosUsuarios();
+
+        user.consultaIDUsuario(2);
+
+        user.removerUsuario(4);
+
+        user.listarTodosUsuarios();
+
         
-        /*do { 
-            int escolha = scanner.nextInt();    
-            op = menu();
-
-            if (op == 1){
-              String nome = scanner.next();
-              String autor= scanner.next();
-              String anoPublicacao = scanner.next();
-
-              Livro nome = new Livro(nome);
-
-
-            }
-        } while (op != 5);
-        
-        */
     }
 }
