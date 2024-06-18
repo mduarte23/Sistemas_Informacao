@@ -70,26 +70,26 @@ public class MainDB {
 
 public class MainDB {
     public static void main(String[] args) {
-        //Livro liv = new Livro("O senhor dos anéis");
-        //liv.setAutor("J. R. R. Tolkien");
-        //liv.setAnoPublicacao(1953);
+        Livro liv = new Livro("O senhor dos anéis");
+        liv.setAutor("J. R. R. Tolkien");
+        liv.setAnoPublicacao(1953);
     
         LivroDAO objDAO = new LivroDAO();
-        //objDAO.inserir(liv);
+        objDAO.inserir(liv);
     
         Usuario user = new Usuario("Matheus");
-        //user.setEmail("matheus@gmail.com");
+        user.setEmail("matheus@gmail.com");
     
         UsuarioDao userDao = new UsuarioDao();
-        //userDao.inserir(user);
+        userDao.inserir(user);
 
         LinkedList<Livro> dados = objDAO.consultarTodos();
-        //System.out.println(dados);
+        System.out.println(dados);
 
-        Livro livroConsulta = objDAO.consultar(1);
+        Livro livroConsulta = objDAO.consultar(2);
         System.out.println(livroConsulta);
 
-
+        //objDAO.excluir(4);
         
         }
     }
