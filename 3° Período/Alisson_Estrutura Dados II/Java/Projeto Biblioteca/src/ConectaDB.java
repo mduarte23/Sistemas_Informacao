@@ -10,6 +10,7 @@ public class ConectaDB {
     //construtor
     //conecta no Banco de Dados
     public ConectaDB(){
+        //url do banco de dados
         String url = "jdbc:mariadb://localhost:3306/ed2";
         String user = "root";
         String pwd = "98245803";
