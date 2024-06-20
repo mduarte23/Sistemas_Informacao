@@ -52,6 +52,7 @@ while True:
     elif opcao == '4':
         deletar_filme()
     elif opcao == '0':
+        print("Saindo...")
         break
     else:
         print("Opção inválida.")
