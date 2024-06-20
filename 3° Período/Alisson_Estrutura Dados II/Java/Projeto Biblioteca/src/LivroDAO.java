@@ -91,19 +91,24 @@ public class LivroDAO {
     //implementar excluir por id
     public void excluir(int id){
         //ConectaDB conexao = new ConectaDB();
-        String sqlDelete = "DELETE FROM livro WHERE id_livro = ?";
-        String sqlConsulta = "SELECT id_livro FROM livro WHERE id_livro = ?";
-        PreparedStatement pst = conexao.getConexaoDB().prepareStatement(sqlConsulta);
+        //String sqlConsulta = "SELECT id_livro FROM livro WHERE id_livro = ?";
+        
+        Livro liv = consultar(id);
+        String sql = "DELETE FROM livro WHERE id_livro = ?";
+
+        //PreparedStatement pst = conexao.getConexaoDB().prepareStatement(sqlConsulta);
         //executar consulta
-        pst.setInt(1, id);
-        ResultSet resultado = pst.executeQuery();
-        String id_livro = resultado.getInt("id_livro");
-        String titulo = resultado.getString("titulo");
+        
+        //String id_livro = resultado.getInt("id_livro");
+        
         
         try {
-            if ( id_livro == id){
+            if (liv.getId() == id){
+                PreparedStatement pst = conexao.getConexaoDB().prepareStatement(sql);
+                pst.setInt(1, id);
+                ResultSet resultado = pst.executeQuery();
+                String titulo = resultado.getString("titulo");
                 System.out.println("Livro " + titulo + " excluido com sucesso");
-                PreparedStatement pst1 = conexao.getConexaoDB().prepareStatement(sqlDelete);
                 pst.execute();
             }else{
                 System.out.println(id + " não está cadastrado");
@@ -111,6 +116,7 @@ public class LivroDAO {
         } catch (Exception e) {
             System.out.println("Falha na consulta livro: "+ e.getMessage());
         }
+        
     }
 
 
