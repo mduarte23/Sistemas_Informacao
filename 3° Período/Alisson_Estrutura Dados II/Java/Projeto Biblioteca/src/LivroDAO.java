@@ -90,25 +90,17 @@ public class LivroDAO {
 
     //implementar excluir por id
     public void excluir(int id){
-        //ConectaDB conexao = new ConectaDB();
-        //String sqlConsulta = "SELECT id_livro FROM livro WHERE id_livro = ?";
-        
+        //cria o obj Livro com o id que deseja excluir
         Livro liv = consultar(id);
-        String sql = "DELETE FROM livro WHERE id_livro = ?";
-
-        //PreparedStatement pst = conexao.getConexaoDB().prepareStatement(sqlConsulta);
-        //executar consulta
-        
-        //String id_livro = resultado.getInt("id_livro");
-        
+        String sql = "DELETE FROM livro WHERE id_livro = ?";  
         
         try {
+            //verifica se o id existe no BD
             if (liv.getId() == id){
                 PreparedStatement pst = conexao.getConexaoDB().prepareStatement(sql);
                 pst.setInt(1, id);
-                ResultSet resultado = pst.executeQuery();
-                String titulo = resultado.getString("titulo");
-                System.out.println("Livro " + titulo + " excluido com sucesso");
+                
+                System.out.println("Livro excluido com sucesso");
                 pst.execute();
             }else{
                 System.out.println(id + " não está cadastrado");
@@ -122,14 +114,14 @@ public class LivroDAO {
 
     //implementar alterar
     //passar o livro com valores atulizados ja
-    public void alterar(Livro livro){
+    public void alterar(Livro livro, int id){
         String sql = "UPDATE livro SET titulo = ?, autor = ?, ano = ? WHERE id_livro = ?";
         try{
-            PreparedStatement pst = conexao.getConexao().prepareStatement(sql);
+            PreparedStatement pst = conexao.getConexaoDB().prepareStatement(sql);
             pst.setString(1, livro.getTitulo());
             pst.setString(2, livro.getAutor());
             pst.setInt(3, livro.getAnoPublicacao());
-            pst.setInt(4, livro.getId());
+            pst.setInt(4, id);
             pst.execute();
 
             System.out.println("Livro atualizado com sucesso.");

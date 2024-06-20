@@ -1,5 +1,5 @@
 public class Livro {
-    static String getContador;
+    //static String getContador;
     private int id;
     private String titulo;
     private String autor;

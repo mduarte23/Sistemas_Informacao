@@ -1,14 +1,14 @@
 public class Usuario {
-    static String getContadorUsuario;
+    //static String getContadorUsuario;
     private int idUsuario;
     private String nome;
     private String email;
-    private static int contadorUsuario = 0;
+    //private static int contadorUsuario = 0;
     
     public Usuario(String nome){
         this.setUsuario(nome);
-        contadorUsuario ++;
-        this.setId_Usuario(contadorUsuario);
+        //contadorUsuario ++;
+        //this.setId_Usuario(contadorUsuario);
     }
     public void setId_Usuario(int idUsuario){
         this.idUsuario = idUsuario;
@@ -20,7 +20,7 @@ public class Usuario {
     }
 
     public int getContador_Usuario(){
-        return  this.contadorUsuario;
+        return  this.idUsuario;
     }
     
 

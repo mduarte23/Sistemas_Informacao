@@ -83,20 +83,22 @@ public class MainDB {
         UsuarioDao userDao = new UsuarioDao();
         //userDao.inserir(user);
 
-        LinkedList<Livro> dados = objDAO.consultarTodos();
-        System.out.println(dados);
+        //LinkedList<Livro> dados = objDAO.consultarTodos();
+        //System.out.println(dados);
 
         //Livro livroConsulta = objDAO.consultar(2);
         //System.out.println(livroConsulta);
 
-        objDAO.excluir(6);
+        objDAO.excluir(8);
 
-        //liv.setTitulo("Teste");
-        liv.setAutor("teste");
-        liv.setAnoPublicacao(2000);
+        Livro livro = new Livro("Teste");
+        livro.setAutor("teste");
+        livro.setAnoPublicacao(2000);
+        LivroDAO livroDAO = new LivroDAO();
 
-        //obj.DAO.alterar(Livro liv);
-        
+        livroDAO.alterar(livro, 9);
+
+        LinkedList<Livro> dados = objDAO.consultarTodos();
         System.out.println(dados);
         
         }
