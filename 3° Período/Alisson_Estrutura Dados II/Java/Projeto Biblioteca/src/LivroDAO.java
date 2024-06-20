@@ -91,41 +91,44 @@ public class LivroDAO {
     //implementar excluir por id
     public void excluir(int id){
         //ConectaDB conexao = new ConectaDB();
-        String sql = "DELETE FROM livro WHERE id_livro = ?";
-        //Livro lista = new Livro();
+        String sqlDelete = "DELETE FROM livro WHERE id_livro = ?";
+        String sqlConsulta = "SELECT id_livro FROM livro WHERE id_livro = ?";
+        PreparedStatement pst = conexao.getConexaoDB().prepareStatement(sqlConsulta);
+        //executar consulta
+        pst.setInt(1, id);
+        ResultSet resultado = pst.executeQuery();
+        String id_livro = resultado.getInt("id_livro");
+        String titulo = resultado.getString("titulo");
+        
         try {
-            PreparedStatement pst = conexao.getConexaoDB().prepareStatement(sql);
-            //executar consulta
-            pst.setInt(1, id);
-            ResultSet resultados = pst.executeQuery();
-            
-            pst.execute();
-            //pegando os dados
-            
-            
-            if (resultados.next()){
-                String titulo = resultados.getString("titulo");
-                String autor = resultados.getString("autor");
-                int ano = resultados.getInt("ano");
-                int id_livro = resultados.getInt("id_livro");
-
-                Livro livro = new Livro(titulo);
-                
-                livro.setAnoPublicacao(ano);
-                livro.setAutor(autor);
-                livro.setId(id_livro);
-                return livro;
+            if ( id_livro == id){
+                System.out.println("Livro " + titulo + " excluido com sucesso");
+                PreparedStatement pst1 = conexao.getConexaoDB().prepareStatement(sqlDelete);
+                pst.execute();
+            }else{
+                System.out.println(id + " não está cadastrado");
             }
-
         } catch (Exception e) {
             System.out.println("Falha na consulta livro: "+ e.getMessage());
         }
-        return null;
     }
 
 
     //implementar alterar
-    public void alterar (Livro livro){
+    //passar o livro com valores atulizados ja
+    public void alterar(Livro livro){
+        String sql = "UPDATE livro SET titulo = ?, autor = ?, ano = ? WHERE id_livro = ?";
+        try{
+            PreparedStatement pst = conexao.getConexao().prepareStatement(sql);
+            pst.setString(1, livro.getTitulo());
+            pst.setString(2, livro.getAutor());
+            pst.setInt(3, livro.getAnoPublicacao());
+            pst.setInt(4, livro.getId());
+            pst.execute();
 
+            System.out.println("Livro atualizado com sucesso.");
+        } catch (Exception e) {
+            System.out.println("Falha na consulta do livro: "+ e.getMessage());
+        }
     }
 }
