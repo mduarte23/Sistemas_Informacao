@@ -89,7 +89,15 @@ public class MainDB {
         Livro livroConsulta = objDAO.consultar(2);
         System.out.println(livroConsulta);
 
-        //objDAO.excluir(4);
+        objDAO.excluir(4);
+
+        liv.setTitulo("Teste");
+        liv.setAutor("teste");
+        liv.setAnoPublicacao(2000);
+
+        obj.DAO.alterar(Livro liv);
+        
+        System.out.println(dados);
         
         }
     }
