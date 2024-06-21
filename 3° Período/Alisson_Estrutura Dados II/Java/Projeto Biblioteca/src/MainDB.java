@@ -12,7 +12,7 @@ public class MainDB {
         while (true) { 
             System.out.println("-----MENU-----");
             System.out.println("1- Cadastro de livros:");
-            System.out.println("2-Cadastro de usuários:");
+            System.out.println("2- Cadastro de usuários:");
             System.out.println("0- Sair:");
             System.out.println("Escolha uma opção: ");
             int opcao = scanner.nextInt();
