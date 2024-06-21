@@ -1,6 +1,8 @@
 
 import java.util.LinkedList;
 
+
+
 /*
 import java.util.Scanner;
 
@@ -70,6 +72,7 @@ public class MainDB {
 
 public class MainDB {
     public static void main(String[] args) {
+        /* 
         Livro liv = new Livro("O senhor dos anéis");
         liv.setAutor("J. R. R. Tolkien");
         liv.setAnoPublicacao(1953);
@@ -89,16 +92,41 @@ public class MainDB {
         //Livro livroConsulta = objDAO.consultar(2);
         //System.out.println(livroConsulta);
 
-        objDAO.excluir(8);
+        //objDAO.excluir(8);
 
-        Livro livro = new Livro("Teste");
-        livro.setAutor("teste");
-        livro.setAnoPublicacao(2000);
-        LivroDAO livroDAO = new LivroDAO();
+        //Livro livro = new Livro("Teste");
+        //livro.setAutor("teste");
+        //livro.setAnoPublicacao(2000);
+        //LivroDAO livroDAO = new LivroDAO();
 
-        livroDAO.alterar(livro, 9);
+        //livroDAO.alterar(livro, 9);
 
-        LinkedList<Livro> dados = objDAO.consultarTodos();
+        //LinkedList<Livro> dados = objDAO.consultarTodos();
+        //System.out.println(dados);
+        */
+
+        //Usuario user = new Usuario("Teste");
+        //user.setEmail("teste@email");
+
+        //UsuarioDao userDao = new UsuarioDao();
+        //userDao.inserir(user);
+        
+        //LinkedList<Usuario> dados = userDao.consultarTodosUsuarios();
+        //System.out.println(dados);
+    
+        //Usuario usuarioConsulta = userDao.consultarUsuario(3);
+        //System.out.println(usuarioConsulta);
+        
+        //userDao.excluirUsuario(8);
+
+        Usuario usuario = new Usuario("Teste1");
+        usuario.setEmail("email.com");
+        
+        UsuarioDao usuarioDAO = new UsuarioDao();
+
+        usuarioDAO.alterarUsuario(usuario, 2);
+
+        LinkedList<Usuario> dados = usuarioDAO.consultarTodosUsuarios();
         System.out.println(dados);
         
         }
