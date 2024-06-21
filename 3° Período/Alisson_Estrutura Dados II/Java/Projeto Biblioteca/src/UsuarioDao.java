@@ -8,7 +8,7 @@ public class UsuarioDao{
         conexao = new ConectaDB();
     }
 
-    public void inserir(Usuario usuario){
+    public void inserirUsuario(Usuario usuario){
         ConectaDB conexao = new ConectaDB();
         String sql = "INSERT INTO usuario (nome, email) values (?, ?)";
         try {

@@ -16,6 +16,7 @@ public class LivroDAO {
             pst.setString(1, livro.getTitulo());
             pst.setString(2, livro.getAutor());
             pst.setInt(3, livro.getAnoPublicacao());
+           
             pst.execute();
             System.out.println("Insercao ok: "+ livro);
         } catch (Exception e) {

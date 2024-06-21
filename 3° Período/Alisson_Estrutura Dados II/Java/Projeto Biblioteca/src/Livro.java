@@ -9,7 +9,7 @@ public class Livro {
     public Livro(String titulo){
         this.setTitulo(titulo);
         //contador ++;
-        //this.setId(contador);
+        this.setId(id);
     }
     public void setId(int id){
         this.id = id;
