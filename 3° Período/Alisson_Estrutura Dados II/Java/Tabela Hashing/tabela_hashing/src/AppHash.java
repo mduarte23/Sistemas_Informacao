@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 
 public class AppHash {
     public static void main(String[] args) {
@@ -12,5 +13,6 @@ public class AppHash {
         mapa.put("ABC-7854", 8741);
         mapa.put("PUT-0800", 784251);
         System.out.println(mapa.get("ABC-7854"));
+        
     }
 }

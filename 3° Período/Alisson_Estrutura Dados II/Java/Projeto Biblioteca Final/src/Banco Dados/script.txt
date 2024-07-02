@@ -1,0 +1,40 @@
+CREATE DATABASE biblioteca;
+
+USE biblioteca;
+
+CREATE TABLE livro(
+	id_livro INT PRIMARY KEY AUTO_INCREMENT,
+	titulo VARCHAR(255),
+	autor VARCHAR(255),
+	ano_publicacao INT	
+);
+
+CREATE TABLE usuario(
+	id_usuario INT PRIMARY KEY AUTO_INCREMENT,
+	nome VARCHAR(255),
+	endereco VARCHAR(255),
+	telefone VARCHAR(255)
+);
+
+CREATE TABLE emprestimo(
+	id_emprestimo INT PRIMARY KEY AUTO_INCREMENT,
+	id_livro INT,
+	id_usuario INT,
+	data_emprestimo DATE,
+	data_devolucao DATE,
+	emprestado BOOLEAN,
+	
+	CONSTRAINT fk_livro
+	FOREIGN KEY (id_livro)
+	REFERENCES livro(id_livro),
+	
+	CONSTRAINT fk_usuario
+	FOREIGN KEY (id_usuario)
+	REFERENCES usuario(id_usuario)
+);
+
+SELECT * FROM livro
+
+SELECT * FROM usuario
+
+SELECT * FROM emprestimo
