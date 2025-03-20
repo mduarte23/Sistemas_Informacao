@@ -1,0 +1,36 @@
+//cria o ususario 
+CREATE USER usermysql@'%' IDENTIFIED BY 'cursomysql'
+
+//lista os usuarios
+SELECT USER FROM mysql.user
+
+//liberar acessos para ususario
+GRANT ALL PRIVILEGES ON *.* TO usermysql@'%';
+
+//visualizar info usuarios
+SELECT USER, HOST, PASSWORD, process_priv FROM mysql.user
+
+//remover privilegios (acessos)
+REVOKE ALL ON *.* FROM usermysql@'%'
+
+//lista AS opcoes da tabela de usuarios
+DESC mysql.user
+
+//lista todos bancos de dados
+SHOW DATABASES
+
+//libera todos privilegios de banco especifico
+GRANT ALL PRIVILEGES ON gestaodb.* TO usermysql@'%'
+
+//retira os privilegios
+REVOKE ALL PRIVILEGES ON gestaodb.* FROM usermysql@'%'
+
+//permisao para acessar somente a tabela
+GRANT ALL PRIVILEGES ON gestaodb.colaboradores TO usermysql@'%'
+
+
+//retira os privilegios de tabela
+REVOKE ALL PRIVILEGES ON gestaodb.colaboradores FROM usermysql@'%'
+
+//exibe os privilegios DO usuario 
+SHOW GRANTS FOR usermysql@'%'

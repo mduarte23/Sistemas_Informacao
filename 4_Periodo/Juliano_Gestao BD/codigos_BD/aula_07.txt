@@ -1,0 +1,124 @@
+DROP FUNCTION if EXISTS rt_nome_cliente;
+
+delimiter $$
+
+CREATE FUNCTION rt_nome_cliente(vn_numeclien INT)
+	RETURNS  VARCHAR(50)
+		BEGIN 
+			DECLARE nome VARCHAR(50);
+			
+			SELECT c_nomeclien INTO nome
+			FROM comclien
+			WHERE n_numeclien = vn_numeclien;
+			
+			RETURN nome;
+		END $$
+#delimiter;
+
+SET GLOBAL log_bin_trust_function_creators = 1;
+
+SHOW FUNCTION STATUS 
+
+
+SELECT rt_nome_cliente(1)
+
+SELECT v.c_codivenda, rt_nome_cliente(v.n_numeclien) AS cliente, v.d_datavenda FROM comvenda v
+ORDER BY 2,3
+
+SELECT * FROM comvende
+
+ALTER TABLE comvenda ADD n_vcomvenda FLOAT(10,2)
+
+#criando a procedure
+DROP PROCEDURE if EXISTS processa_comissionamento;
+delimiter $
+CREATE PROCEDURE processa_comissioamento(
+	IN data_inicial DATE,
+	IN data_final DATE,
+	OUT total_processado INT)
+	BEGIN 
+		DECLARE total_venda FLOAT(10,2)DEFAULT 0;
+		DECLARE venda INT DEFAULT 0;
+		DECLARE vendedor int DEFAULT 0;
+		DECLARE comissao FLOAT(10,2) DEFAULT 0;
+		DECLARE valor_comissao FLOAT(10,2) DEFAULT 0;
+		DECLARE aux int DEFAULT 0;
+		DECLARE fimloop INT DEFAULT 0;
+		
+/*
+cursor para buscar os registros a serem processados
+entrre a data inicial e data final e valor de venda
+é maior que zero
+*/		
+
+	DECLARE busca_pedido CURSOR for
+		SELECT n_numevenda, n_totavenda, n_numevende
+		FROM comvenda 
+		WHERE d_datavenda BETWEEN data_inicial
+		AND data_final AND n_totavenda > 0;
+		
+/*
+rotina de tratamento para o banco de dados não
+executar o loop quando ele terminar, evitando que retorne erro
+*/
+
+
+	DECLARE CONTINUE handler FOR SQLSTATE '02000' SET fimloop = 1;
+	#Inicio do loop
+		vendas: loop
+		#verifica se o loop terminou e saio do loop 
+		if fimloop = 1 then
+			leave vendas;
+		END if;
+		#recebe o resultado da consulta em cada variável
+		fetch busca_pedido INTO venda, total_venda, vendedor;
+		#busca o valor do percentual de cada vendedor
+		SELECT n_porcvende INTO comissao
+		FROM comvende
+		WHERE n_numevende = vendedor;
+		#verifica se o percentual do vendedor é maior 
+		#que zero logo após a condição deve ter o then
+		if (comissao > 0) then
+			#calcular o valor da comissao 
+			SET valor_comissao = ((total_venda * comissao) /100);
+			#atualiza (update) a tabela comvenda com o valor da comissao
+			UPDATE comvenda SET n_vcomvenda = valor_comissao 
+			WHERE n_numevenda = venda;
+			COMMIT;
+			
+			#verifica e  o percentual do vendedor é igual a zero na regra do nosso sistema 
+			#se o vendedor tem 0 ele ganha 0 porcento de comissao
+			
+		ELSEIF (comissao= 0) then
+			UPDATE comvenda SET n_vcomvenda = 0
+			WHERE n_numevenda - venda;
+			COMMIT;
+/* se o vendedor nao possui registro no percentual de comissao ele irá ganhar 1 de comisso isso pela
+regra de negócio do sistema
+*/
+
+		ELSE 
+			SET comissao = 1;
+			SET valor_comissao = ((total_venda * comissao) / 100);
+			UPDATE comvenda SET n_vcomvenda = valor_comissao 
+			WHERE n_numevenda - venda;
+			COMMIT;
+			#encerra o if
+			
+		END if;
+		SET comissao = 0;
+		SET aux = aux + 1;
+		END loop vendas;
+		SET total_processado = aux;
+		close busca_pedido;
+		END $
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

@@ -1,0 +1,37 @@
+USE comercial
+
+SELECT c.n_numeclien, c.c_codiclien, c.c_razaclien FROM comclien c
+WHERE c.c_codiclien <> '0002'
+
+SELECT c.n_numeclien, c.c_codiclien, c.c_razaclien FROM comclien c
+WHERE c.c_codiclien NOT IN  ('0002', '0003') 
+
+
+SELECT c.n_numeclien, c.c_codiclien, c.c_razaclien FROM comclien c
+WHERE c.c_razaclien LIKE '%ltda%'
+
+SELECT v.n_numeclien FROM  comvenda v
+GROUP BY v.n_numeclien
+
+SELECT c.n_numeclien, c.c_codiclien, c.c_razaclien FROM comclien c
+WHERE c.n_numeclien IN (SELECT v.n_numeclien FROM  comvenda v
+)
+
+SELECT v.c_codivenda AS CodVenda, (SELECT c.c_razaclien FROM comclien c
+WHERE c.n_numeclien = v.n_numeclien) AS Razao
+FROM comvenda v 
+
+
+SELECT c.c_codiclien, c.c_razaclien, COUNT(*) AS Qtd_Vendas FROM comclien c, comvenda v
+WHERE c.n_numeclien = v.n_numeclien
+GROUP BY c.c_codiclien, c.c_razaclien 
+HAVING COUNT(v.n_numevenda) > 2
+
+SELECT MAX(v.n_totavenda) AS Maior_Venda FROM comvenda v
+
+SELECT MIN(v.n_totavenda) AS Menor_Venda FROM comvenda v
+
+SELECT v.d_datavenda AS dia_venda, SUM(v.n_valovenda) as Valor_Venda, SUM(v.n_descvenda) as descontos, SUM(v.n_totavenda) AS total_venda 
+FROM comvenda v
+WHERE v.d_datavenda BETWEEN '2015-01-01' AND '2015-01-02'
+GROUP BY v.d_datavenda

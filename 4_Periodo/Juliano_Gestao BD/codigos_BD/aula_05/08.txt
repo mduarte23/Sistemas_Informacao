@@ -1,0 +1,6 @@
+SELECT c.colaborador, c.id_empresa, e.empresa, c.id_motivo_demissao, d.motivo , c.salario, c.salario/22 AS valor_dia
+FROM colaboradores c,  empresa e, motivos_demissao d
+WHERE c.id_motivo_demissao = e.id 
+AND c.id_motivo_demissao = d.id
+ORDER BY c.colaborador
+LIMIT 100, 101

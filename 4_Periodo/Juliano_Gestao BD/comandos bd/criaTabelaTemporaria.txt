@@ -1,0 +1,17 @@
+//executa comandos sem precisar da tabela
+SELECT 5+5 FROM DUAL
+
+//SYSDATE é uma funcao de data
+SELECT SYSDATE() FROM DUAL 
+
+//cria a tabela com AS informaçoes DO selec
+CREATE TABLE colabPaulistas AS 
+SELECT t.colaborador, t.horas_semana,t.`status`, t.salario, t.nascimento, t.sexo, t.endereco, t.cidade, t.estado, t.uf
+FROM colaboradores t
+WHERE t.id_motivo_demissao = 0 AND t.`status` = 'A' AND uf= 'sp'
+
+//executa a tabela criada
+SELECT * FROM colabpaulistas
+
+//apaga a tabela criada
+DROP table colabPaulistas

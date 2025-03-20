@@ -1,0 +1,17 @@
+DROP FUNCTION if exists rt_percentual_comissao;
+
+delimiter $
+CREATE FUNCTION rt_percentual_comissao(vn_n_numevende INT)
+RETURNS FLOAT 
+DETERMINISTIC 
+BEGIN 
+	DECLARE percentual_comissao FLOAT(10,2);
+	SELECT n_porcvende INTO percentual_comissao
+	FROM comvende
+	WHERE n_numevende = vn_n_numevende;
+	
+	RETURN percentual_comissao;
+END;
+$
+	
+SELECT rt_percentual_comissao(1);

@@ -1,0 +1,63 @@
+SELECT * FROM comclien
+
+#criando indice
+ALTER TABLE comclien 
+ADD INDEX idx_comclien_3(c_codiclien)
+
+ALTER TABLE comclien 
+ADD INDEX idx_comclient_4(c_razaclien)
+
+#listando os indeces
+SHOW INDEXES FROM comclien
+
+
+SELECT * FROM comclien
+WHERE c_razaclien LIKE 'a%'
+
+
+#criando indices unicos (obriga a ser valor unico na coluna)
+ALTER TABLE comvenda 
+ADD UNIQUE INDEX idx_comvenda_1(c_codivenda)
+
+#apagando indice
+ALTER TABLE comvenda
+DROP INDEX idx_comvenda_1
+
+#criando uma view
+CREATE OR REPLACE VIEW clientes_vendas
+AS 
+SELECT c_razaclien, c_nomeclien, c_cnpjclien, c_codivenda, n_totavenda, d_datavenda
+FROM comclien, comvenda
+WHERE comclien.n_numeclien = comvenda.n_numeclien
+
+
+#usando view
+SELECT * FROM clientes_vendas
+#WHERE c_codivenda = 1
+ORDER BY c_codivenda
+
+
+CREATE OR REPLACE VIEW produtos
+AS
+SELECT n_numeprodu, c_codiprodu, c_descprodu, n_valoprodu, c_situprodu, n_numeforne
+FROM comprodu
+
+SELECT * FROM produtos
+
+
+INSERT INTO produtos VALUE
+(6, '0006', 'SMART WATCH', '2412.98', 'A', 1)
+
+
+UPDATE produtos SET n_valoprodu = '1245.99'
+WHERE n_numeprodu = 6
+
+DELETE FROM produtos
+WHERE n_numeprodu = 6
+
+DROP VIEW produtos
+
+
+
+
+

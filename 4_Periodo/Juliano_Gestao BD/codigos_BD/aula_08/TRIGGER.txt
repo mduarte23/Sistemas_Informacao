@@ -1,0 +1,19 @@
+DROP TRIGGER if EXISTS tru_vendas_bi;
+
+delimiter $
+CREATE TRIGGER tri_vendas_bi
+BEFORE INSERT ON comvenda
+FOR EACH ROW
+BEGIN
+	DECLARE percentual_comissao FLOAT(10,2);
+	DECLARE valor_comissao FLOAT(10,2);
+	#busca o percentual de comissao que deve receber.
+	SELECT rt_percentual(NEW.n_numevende) INTO percentual_comissao;
+	#calcula comissao 
+	SET valor_comissao = ((NEW.n_totavenda * percentual_comissao) /100);
+	#recebe o novo valor da comissao
+	SET NEW.n_vcomvenda = valor_comissao;
+END;
+$
+
+SELECT * FROM comvenda

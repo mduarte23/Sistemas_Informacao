@@ -1,0 +1,18 @@
+#inicia o agendamento da funcao
+SET GLOBAL event_scheduler = ON
+#pega a hora do computador
+SELECT NOW();
+#CRIANDO AGENDAMENTO (schedule)
+#apaga o evento se ja existir
+DROP EVENT if EXISTS processa_comissao;
+delimiter $
+#cria o evento
+CREATE EVENT processa_comissao
+ON SCHEDULE EVERY 1 week STARTS '2024-09-16 19:45:00' 
+DO 
+BEGIN
+CALL processa_comissionamento(
+CURDATE() - INTERVAL 7 DAY, CURDATE(), @a);
+
+END 
+$
