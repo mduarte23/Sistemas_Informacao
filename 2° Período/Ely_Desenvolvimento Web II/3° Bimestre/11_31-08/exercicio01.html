@@ -1,0 +1,84 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <meta charset="utf-8">
+        <title>Exercicio 1</title>
+    </head>
+    <body>
+        <h1>Celular</h1>
+        <input type="text" id="mostrar">
+        <table>
+            <tr>
+                <td><input type=button  value="1" onclick="um()"></td>
+                <td><input type=button  value="2" onclick="dois()"></td>
+                <td><input type=button  value="3" onclick="tres()"></td>
+            </tr>
+            <tr>
+                <td><input type=button  value="4" onclick="quatro()"></td>
+                <td><input type=button  value="5" onclick="cinco()"></td>
+                <td><input type=button  value="6" onclick="seis()"></td>
+            </tr>
+            <tr>
+                <td><input type=button  value="7" onclick="sete()"></td>
+                <td><input type=button  value="8" onclick="oito()"></td>
+                <td><input type=button  value="9" onclick="nove()"></td>
+            </tr>
+            <tr>
+                <td><input type=button  value="*" onclick="asterisco()"></td>
+                <td><input type=button  value="0" onclick="zero()"></td>
+                <td><input type=button  value="#" onclick="hasteg()"></td>
+            </tr>
+        </table>
+        
+        <script>
+            function um(){
+                var mostrar = document.getElementById('mostrar');
+                mostrar.value =  mostrar.value + "1";
+            }
+            function dois(){
+                var mostrar = document.getElementById('mostrar');
+                mostrar.value =  mostrar.value + "2";
+            }
+            function tres(){
+                var mostrar = document.getElementById('mostrar');
+                mostrar.value =  mostrar.value + "3";
+            }
+            function quatro(){
+                var mostrar = document.getElementById('mostrar');
+                mostrar.value =  mostrar.value + "4";
+            }
+            function cinco(){
+                var mostrar = document.getElementById('mostrar');
+                mostrar.value =  mostrar.value + "5";
+            }
+            function seis(){
+                var mostrar = document.getElementById('mostrar');
+                mostrar.value =  mostrar.value + "6";
+            }
+            function sete(){
+                var mostrar = document.getElementById('mostrar');
+                mostrar.value =  mostrar.value + "7";
+            }
+            function oito(){
+                var mostrar = document.getElementById('mostrar');
+                mostrar.value =  mostrar.value + "8";
+            }
+            function nove(){
+                var mostrar = document.getElementById('mostrar');
+                mostrar.value =  mostrar.value + "9";
+            }
+            function asterisco(){
+                var mostrar = document.getElementById('mostrar');
+                mostrar.value =  mostrar.value + "*";
+            }
+            function zero(){
+                var mostrar = document.getElementById('mostrar');
+                mostrar.value =  mostrar.value + "0";
+            }
+            function hasteg(){
+                var mostrar = document.getElementById('mostrar');
+                mostrar.value =  mostrar.value + "#";
+            }
+        </script>
+    </body>
+</html>

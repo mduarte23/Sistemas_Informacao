@@ -1,0 +1,34 @@
+<!--
+    Implemente um sistema Web que permita ao usuário digitar 3 números. Considere que cada número é o valor do tamanho de uma reta. Sabe-se que para se formar um triângulo é necessário que o tamanho de cada reta seja menor que a soma das outras duas retas. Este sistema web deverá informar
+ao usuário se é possível montar um triângulo com esses 3 números ou não. Caso possa montar um triângulo, mostre ainda qual é o tipo de triângulo seguindo as seguintes regras:
+● Triângulo Equilátero: Todos os lados são iguais. 
+● Triângulo Isósceles: Dois lados são iguais. 
+● Triângulo Escaleno: Todos os lados são diferentes.
+-->
+
+<html>
+    <head>
+        <title>Triangulo</title>
+        <meta charset="utf-8"/>
+    </head>
+    <body>
+        <h1>Triângulo</h1>
+        <label>
+            Reta 1:
+            <input type="number" id="reta1"/>
+            <br/>
+            Reta 2:
+            <input type="number" id="reta2"/>
+            <br/>
+            Reta 3:
+            <input type="number" id="reta3"/>
+            <br/>
+        </label>
+        <input type="button" value="Calcular" onclick="calcular()"/>
+        <input type="button" value="Limpar" onclick="limpar()"/>
+        <div id="resp"></div>
+        <script src="exercicio04.js"></script>
+        
+
+    </body>
+</html>

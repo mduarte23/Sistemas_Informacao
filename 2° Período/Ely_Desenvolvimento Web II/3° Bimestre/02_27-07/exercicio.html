@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>Exercicio</title>
+    </head>
+    <body>
+        <script>
+            document.write('<h3> 1° Declare variáveis com os valores de 2 notas, calcule e mostre a média delas</h3>');
+            var nota1 = 8;
+            var nota2 = 9.7;
+            var media = (nota1 + nota2) / 2;
+            document.write("A média é: "+ media);
+            document.write('<hr>')
+            
+            /*Declare variáveis com o nome de uma pessoa e seu ano de nascimento. Mostre o seu nome e a sua idade (considere que ela já fez aniversário neste ano).*/
+            var nome = "Marcelo";
+            var nascimento = 1995;
+            var idade =2023 - nascimento;
+            window.alert (nome + ' tem ' + idade + ' anos');
+            
+            //Declare variáveis para armazear o preço e a quantidade de um produto. Mostre o valor total.
+            var preco = 18.50;
+            var qtd = 5;
+            var total = preco * qtd;
+            window.alert ('O valor total é R$'+total.toFixed(2))// Arredonda a qtde de casas decimais
+
+            //Declare variáveis para armazenar a altura e o peso de uma pessoa. Mostre o seu IMC sabendo-se que o IMC é igual à: peso / altura ²
+            var altura = 1.70;
+            var peso = 75;
+            var imc = peso/(altura**2);
+            window.alert ('O IMC da pessoa é ' + imc);           
+        </script>
+    </body>
+</html>

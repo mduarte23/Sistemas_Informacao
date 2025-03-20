@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Select</title>
+    </head>
+    <body>
+        Nome:
+        <input type="text">
+        <br/>
+        Senha: 
+        <input type="password">
+        <br/>
+        Data:
+        <input type="date">
+        <br/>
+        Número:
+        <input type="number">
+        <br/>
+        <input type="checkbox" id="teste">
+        Checkbox
+        <br/>
+        
+        <input type="radio" name="curso" id="sis">
+        Sistemas
+        <br/> 
+        <input type="radio" name="curso" id="dir">
+        Direito
+        <br/>
+        <input type="radio" name="curso" id="odo">
+        Odonto
+        <br/>
+
+        <select id="turno">
+            <option>noturno</option>
+            <option>diurno</option>
+        </select>
+
+        <script>
+            var sis= document.getElementById('sis');
+            alert(sis.checked);
+            var dir= document.getElementById('dir');
+            alert(dir.checked);
+            var odo=document.getElementById('odo');
+            alert(odo.checked);
+
+            var check = document.getElementById('teste');
+            alert(check.checked);
+
+            var turno = document.getElementById('turno');
+            alert(turno.options[turno.selectIndex].text);
+
+        </script>
+    </body>
+</html>

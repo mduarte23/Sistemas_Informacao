@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>Camisetas</title>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+            <div class="mostrar">
+            <input type="button" value="<" onclick="voltar()"/>
+            <img id="camiseta" src="./img/azulfrente.jpg" />
+            <input type="button" value=">" onclick="avancar()"/>
+            <br/>
+            <br/>
+            
+            
+            <div class="cor azul" onclick="azul()"></div>
+            <div class="cor branca" onclick="branca()"></div>
+        
+            <div id="descricao"></div>
+            <div id="preco"></div>
+        </div>
+        <div class="catalogo">
+            <p>Escolha sua opção</p>
+            <img src="./img/camiseta.jpg" onclick="camiseta()">
+            <br/>
+            <img src="./img/bermuda.jpg" onclick="bermuda()">
+        </div>
+
+        <script src="script.js"></script>
+
+    </body>
+</html>

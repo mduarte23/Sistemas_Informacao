@@ -1,0 +1,55 @@
+<!--
+    Faça uma página que mostr a foto de um personagem qualquer 1000 vezes na pagina
+-->
+
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+        <title>Exercicio 03</title>
+    </head>
+    <body>
+        
+        <div id="resp"></div>
+        <script>
+            
+            var resp = document.getElementById("resp");
+            
+            for (var i=0; i < 100; i++){
+                resp.innerHTML += "<img src='simpsons.jpg'/>"
+            }
+        </script>
+    </body>
+</html>
+<!--
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mostrar uma Foto 1000 Vezes</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+</head>
+<body>
+   
+    <div id="resp"></div>
+
+    <script>
+        // URL da imagem do personagem (substitua pela URL da sua imagem)
+        var imagemPersonagem = 'simpsons.jpg';
+
+        // Obtém uma referência ao elemento de contêiner
+        var resp = document.getElementById('resp');
+
+        // Loop para mostrar a imagem 1000 vezes
+        for (var i = 0; i < 10; i++) {
+            // Cria um elemento de imagem
+            var imagem = document.createElement('img');
+            
+            // Define o atributo 'src' com a URL da imagem do personagem
+            imagem.src = imagemPersonagem;
+
+            // Adiciona a imagem ao contêiner
+            resp.appendChild(imagem);
+        }
+    </script>
+</body>
+</html>
+-->

@@ -1,0 +1,43 @@
+<!--7 - O custo ao consumidor de um carro novo é a soma do custo de fábrica com a porcentagem
+do distribuidor e dos impostos (aplicados, primeiro os impostos sobre o custo de fábrica, e
+depois a porcentagem do distribuidor sobre o resultado). Supondo que a porcentagem do
+distribuidor seja de 28% e os impostos 45%. Escrever um algoritmo que leia o custo de fábrica
+de um carro e informe o custo ao consumidor do mesmo.-->
+
+<html>
+    <head>
+        <title>Concessionaria</title>
+    </head>
+    <body>
+        <h1>Calculo de venda do veículo</h1>
+        Preço de custo:
+        <input type="number" id="custo"/>
+        <br/>
+        <input type="button" value="Calcule" onclick="calcular()"/>
+        <input type="button" value="Limpar" onclick="limpar()"/>
+        <div id="resultado"></div>
+        
+        <script>
+            function calcular(){
+                //pega os elementos
+                var custo= document.getElementById("custo");
+                var resultado = document.getElementById("resultado");
+                //pega os valores
+                var preco = parseFloat(custo.value);
+                //calcula o resultado
+                var imposto = (0.45 * preco) + preco;
+                var total = (0.28 * imposto) + imposto;
+                //mostra o resultado
+                resultado.innerHTML = "O carro deverá ser vendido por R$" + total.toFixed(2);
+            }
+            function limpar(){
+                var custo = document.getElementById("custo");
+                var resultado = document.getElementById("resultado");
+
+                custo.value="";
+                resultado.innerHTML="";
+                custo.focus();
+            }
+        </script>
+    </body>
+</html>

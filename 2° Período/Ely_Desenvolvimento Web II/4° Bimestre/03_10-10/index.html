@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>OnChange</title>
+        <meta charset="utf-8"/>
+    </head>
+    <body>
+        <h1>Formulário</h1>
+        <label>
+            Marca:
+            <select id="marca" onchange="carregarProduto()">
+                <option></option>
+                <option>Aplle</option>
+                <option>Samsung</option>
+                <option>Xiaomi</option>
+            </select>
+        </label>
+     
+        <label>
+            Produto:
+            <select id="produto" onchange="carregarPreco()">
+        </select>
+        </label>
+        
+        Quantidade:
+        <input type="number" id="qtd" onchange="precoTotal()"/>
+<br/>
+<br/>
+        <label>
+            Preço Unitário:
+            <span id="precoUnit">R$  </span>
+        </label>
+    <br/>
+    <br/>
+        <label>
+            Preço Total:
+            <span id="precoTotal">R$ </span>
+        </label>
+        
+       
+    </body>
+    <script src="script.js"></script>
+</html>

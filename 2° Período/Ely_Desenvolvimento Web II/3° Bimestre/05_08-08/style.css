@@ -1,0 +1,23 @@
+.borda{
+    border-color: #dcdee1;
+    border-radius: 8px;
+    border-style: solid;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 5px;
+    width: 190px;
+    
+}
+.centro{
+    text-align: center;
+}
+.titulo{
+    color: #2770d4;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 10px;
+}
+.valor{
+    color: #2a2b2e;
+    font-weight: bold;
+    margin-top: 10px;
+}

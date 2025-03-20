@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>Iphone</title>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <meta charset="utf-8"/>
+    </head>
+    <body>
+        <h1>Loja do IPhone</h1>
+        <div id="alinhamento">
+            <div id= "foto">
+                <img src="./img/iphone.jpg">
+            </div>
+            
+            <p>
+                Apple iPhone 13 128GB </br> Azul Tela 6,1” 12MP
+            </p></br>
+            <span id="valor" style="font-weight: bold;">
+                $1000,00</span></br>
+            <button>COMPRAR</button>
+        </div>
+        <footer>
+            Site desenvolvidao por Marcelo Duarte
+        </footer>
+        <script>
+            var valor = 1000;
+            var reais = valor * 5.3;
+            //pega a tag desejada pelo ID
+            var tag = document.getElementById("valor");
+            tag.innerHTML = "R$ "+ reais.toFixed(2);
+        </script>
+        
+    </body>
+</html>

@@ -1,0 +1,43 @@
+<!--- Deseja-se criar um sistema para calcular o valor de troco para um caixa de uma loja, ondeo usuário irá digitar o valor total da compra e o valor pago pelo cliente.-->
+
+<html>
+    <head>
+        <title>Troco</title>
+    </head>
+    <body>
+        <h1>Calcule o troco</h1>
+        Valor da compra:
+        <input type="number" id="compra"/>
+        <br/>
+        Valor pago pelo cliente:
+        <input type="number" id="pago"/>
+        <br/>
+        <input type="button" value="Calcule" onclick="calcule()"/>
+        <input type="button" value="Limpar" onclick="limpar()"/>
+        <div id="resultado"></div>
+        <script>
+            function calcule(){
+                //pega os elementos
+                var compra = document.getElementById("compra");
+                var pago = document.getElementById("pago");
+                var resultado = document.getElementById("resultado");
+                // Pega os valores
+                var valor = parseFloat(compra.value);
+                var receber = parseFloat(pago.value);
+                var troco = receber - valor;
+                //Mostra o resultado
+                resultado.innerHTML= 'O troco será R$' + troco.toFixed(2);
+            }
+            function limpar(){
+                var compra = document.getElementById("compra");
+                var pago = document.getElementById("pago");
+                var resultado = document.getElementById("resultado");
+
+                compra.value ="";
+                pago.value = "";
+                resultado.innerHTML= "";
+                compra.focus();
+            }
+        </script>
+    </body>
+</html>

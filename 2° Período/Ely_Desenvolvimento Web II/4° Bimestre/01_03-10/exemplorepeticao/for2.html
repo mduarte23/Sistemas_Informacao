@@ -1,0 +1,16 @@
+<html>
+    <body>
+        Ano
+        <select id="ano">
+            
+        </select>
+        <script>
+            //faça um código em JS capaz de preencher o campo ano com opções de 1900 até 2023
+            var resp = document.getElementById("ano");
+            for (var a=1900; a<=2023; a++){
+                resp.innerHTML += "<option>"+ a + "</option>";
+            }
+
+        </script>
+    </body>
+</html>

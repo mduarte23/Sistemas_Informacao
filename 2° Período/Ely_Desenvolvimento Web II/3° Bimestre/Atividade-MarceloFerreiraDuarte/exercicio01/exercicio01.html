@@ -1,0 +1,26 @@
+<!--
+Desenvolva um sistema Web que verifique se está compensando abastecer com gasolina ou com etanol. Esse sistema web deverá permitir ao usuário digitar preço atual da gasolina e do etanol e, após o usuário clicar nobotão“Calcular” o sistema deverá calcular e informar se está compensando abastecer com álcool ou com gasolina. Para o álcool ser mais vantajoso do que a gasolina, o preço do litro tem que custar até 70% do litro da gasolina.
+-->
+
+<html>
+    <head>
+        <title>Abastecimento</title>
+        <meta charset="utf-8"/>
+    </head>
+    <body>
+        <h1>Comparador de preços</h1>
+        <label>
+            Preço da Gasolina:
+            <input type="number" id="gasolina"/>
+            <br/>
+            <br/>
+            Preço do etanol:
+            <input type="number" id="etanol"/>
+            <br/><br/>
+        </label>
+        <input type="button" value="Calcular" onclick="calcular()"/>
+        <input type="button" value="Limpar" onclick="limpar()"/>
+        <div id="resp"></div>
+        <script src="exercicio01.js"></script>
+    </body>
+</html>

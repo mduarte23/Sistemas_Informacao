@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>Botoes</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <h1>Paleta de cores</h1>
+        <div class="preenchimento" id="preenchimento"></div>
+        <div class="quadrado">
+            <div class="vermelho" onclick="vermelho()"></div>
+            <div class="amarelo" onclick="amarelo()"></div>
+            <div class="verde" onclick="verde()"></div>
+            <div class="azul" onclick="azul()"></div>
+            <div class="preto" onclick="preto()"></div>
+        </div>
+        <script>
+            function vermelho(){
+                document.getElementById("preenchimento").style.background= "red";
+            }
+            function amarelo(){
+                document.getElementById("preenchimento").style.background= "yellow";
+            }
+            function verde(){
+                document.getElementById("preenchimento").style.background= "green";
+            }
+            function azul(){
+                document.getElementById("preenchimento").style.background= "blue";
+            }
+            function preto(){
+                document.getElementById("preenchimento").style.background= "black";
+            }
+        </script>
+    </body>
+</html>

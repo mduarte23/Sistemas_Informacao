@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>Input</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <h1>Exemplo de Formulário</h1>
+        Primeiro Número
+        <input type="number" id="txtn1"/>
+        </br>
+        Segundo Número
+        <input type="number" id="txtn2"/>
+        </br>
+        <input type="button" value="ok" onclick="calcular()"/>
+        <input type="button" value="limpar" onclick="limpar()"/>
+        <br/>
+        <div  id="resp"></div>
+        <script>
+            function calcular(){
+                //pega os elemntos do HTML
+                var txtn1= document.getElementById("txtn1");
+                var txtn2= document.getElementById("txtn2");
+                var resp= document.getElementById("resp");
+                //pega os valores digitados pelo usuário
+                var n1 = parseInt(txtn1.value);
+                var n2 = parseInt(txtn2.value);
+                //faz o cálculo
+                var soma = n1 + n2;
+                //Exibe o resultado
+                resp.innerHTML= "Soma: "+ soma;
+            }
+            function limpar(){
+                //pega os elemntos do HTML
+                var txtn1= document.getElementById("txtn1");
+                var txtn2= document.getElementById("txtn2");
+                var resp= document.getElementById("resp");
+                //limpa o texto
+                txtn1.value = "";
+                txtn2.value = "";
+                resp.innerHTML = "";
+                //coloca o foco no input
+                txtn1.focus();
+            }
+        </script>
+
+
+    </body>
+</html>

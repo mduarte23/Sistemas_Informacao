@@ -1,0 +1,48 @@
+h1{
+    text-align: center;
+}
+.preenchimento{
+    margin-top: 50px;
+    border-color: black;
+    border-radius: 8px;
+    border-style: solid;
+    width: 50%;
+    height: 10%;
+    margin-left: 25%;
+}
+.quadrado{
+    display:flex;
+    margin-left: 35%;
+    margin-top: 20px;
+    
+}
+.vermelho{
+    width: 75px;
+    height: 75px;
+    background-color: red;
+    margin: 5px;
+}
+.amarelo{
+    width: 75px;
+    height: 75px;
+    background-color: yellow;
+    margin: 5px;
+}
+.verde{
+    width: 75px;
+    height: 75px;
+    background-color: green;
+    margin: 5px;
+}
+.azul{
+    width: 75px;
+    height: 75px;
+    background-color: blue;
+    margin: 5px;
+}
+.preto{
+    width: 75px;
+    height: 75px;
+    background-color: black;
+    margin: 5px;
+}

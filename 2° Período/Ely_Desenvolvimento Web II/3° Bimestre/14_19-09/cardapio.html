@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>Cardapio</title>
+        <meta charset="utf-8"/>
+    </head>
+    <body>
+        <h1>Cardápio</h1>
+        <label></label>
+            Produto:
+            <select id="produto">
+                <option>Coca-Cola Lata</option>
+                <option>Coxinha</option>
+                <option>Pão de Queijo</option>
+            </select>
+            <br/>
+            Quantidade:
+            <input type="number" id="quantidade"/>
+            <br/>
+            <input type="radio" id="dinheiro" name="pgt"/> Dinheiro
+            <br/>
+            <input type="radio" id="cartao" name="pgt"/>Cartão
+            <br/>
+            <input type="checkbox" id="entrega"/>Entrega
+            <br/>
+        </label>
+        <input type="button" value="Calcular" onclick="calcular()"/>
+        <input type="button" value="Limpar" onclick="limpar()"/>
+        <br/>
+        <div id="resp"></div>
+        <script src="script.js"></script>
+    </body>
+</html>

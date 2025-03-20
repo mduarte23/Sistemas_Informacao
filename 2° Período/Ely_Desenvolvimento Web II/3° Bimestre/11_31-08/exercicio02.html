@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Exercicio 02</title>
+    </head>
+    <body>
+        <h1>Tabela de Times</h1>
+        Time:
+        <select id="time">
+            <option>Corinthians</option>
+            <option>Comercial</option>
+            <option>Chapeconse</option>
+        </select>
+        <br/>
+        Pontos:
+        <input type="text" id="ponto">
+        <br/>
+        Divisão:
+        <br/>
+        <input type="radio" name="divisao" id="divisao1"> 1° Divisão <!--bolinha seleçao-->
+        <br/>
+        <input type="radio" name="divisao" id="divisao2"> 2° Divisão
+        <br/>
+        Classificado:
+        <input type="checkbox" id="classificado"><!--Caixa de selecao-->
+
+        <br/><br/>
+        <input type="button" onclick="mostrar()" value="OK">
+
+        <div id="resultado"></div>
+
+        <script>
+            function mostrar(){
+                var time = document.getElementById('time');
+                var ponto = document.getElementById('ponto');
+                var divisao1 = document.getElementById('divisao1');
+                var divisao2 = document.getElementById('divisao2');
+                var classificado = document.getElementById('classificado');
+                var resultado = document.getElementById('resultado');
+
+                var pontos =  ponto.value
+
+                resultado.innerHTML = "<p>Time: " + time.options[time.selectedIndex].text +"</p>" + "<p>Pontos: " + pontos + "</p>"
+                + "<p>1° Divisão: " + divisao1.checked + "</p>" + "<p>2° Divisão: " + divisao2.checked
+                + "</p>" + "<p>Classificado: " + classificado.checked + "</p>";
+            }
+
+
+        </script>
+    </body>
+</html>

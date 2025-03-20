@@ -1,0 +1,35 @@
+
+<html>
+    <head>
+        <title>Juros</title>        
+        <meta charset="utf-8"/>
+    </head>
+    <body>
+        <h1>Opçoes de Parcelamentos</h1>
+        <p>Valor à vista: R$1000.00</p>
+        <div id="valor">
+            1000
+        </div>
+        <script>
+            //Calcule e mostre o preço do produto em reais
+            //dividido em 6 parcela acrescentando 10%
+            //de juros (mostre o valor total e o valor 
+            //de cada parcela)
+            //mostre também o preço em 24x acrescentando 
+            //25% de juros (mostre o valor total e o valor de cada parcela)
+            var valor = document.getElementById("valor");
+            var vista = 1000;
+            var x6 = (vista * 0.10) + vista;
+            var parcela6 = x6 / 6;
+            document.write("O valor total em 6 vezes é R$" + x6.toFixed(2));
+            document.write('</br>')
+            document.write("Serão 6 parcelas no valor de R$" + parcela6.toFixed(2));
+            document.write('<hr>')
+            var x24 = (vista * 0.25) + vista;
+            var parcela24 = x24/ 24;
+            document.write  ("O valor total em 24 vezes é R$" + x24.toFixed(2));
+            document.write('</br>')
+            document.write("Serão 24 parcelas no valor de R$" + parcela24.toFixed(2));
+            document.write('<hr>')
+        </script>
+    </body>

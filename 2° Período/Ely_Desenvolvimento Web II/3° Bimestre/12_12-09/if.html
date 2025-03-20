@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>IF</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        Idade
+        <input type="number" id="idade">
+        <br/>
+        <input type="button" value="OK" onclick="calcular()">
+        <br/>
+        <div id="resp"></div>
+
+        <script>
+            function calcular(){
+                var idade = document.getElementById("idade").value;
+                var resp = document.getElementById("resp");
+                if ((idade >= 18)&&(idade <=65)){
+                    resp.innerHTML = "Voto Obrigatório."
+                }
+                else if (idade < 16){
+                    resp.innerHTML = "Não Vota.";
+                }
+                else{
+                    resp.innerHTML = "Voto Facultativo."
+                }
+            }      
+        </script>
+    </body>
+</html>

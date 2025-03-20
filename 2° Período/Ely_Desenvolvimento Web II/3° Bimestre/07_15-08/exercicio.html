@@ -1,0 +1,125 @@
+<!--
+    1- Peça para o usuário digitar 2 notas. Calcule e mostre a média delas.
+   
+-->
+<html>
+    <head>
+        <title>Exercício</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h1>Exercício 1</h1>
+        Nota 1
+        <input type="number" id="nota1"/>
+        <br/>
+        Nota 2
+        <input type="number" id="nota2"/>
+        <br/>
+        <input type="button" value="media" onclick="media()"/>
+        <input type="button" value="limpar" onclick="limpar()"/>
+        <div id="media"></div>
+        
+        <script>
+            function media(){
+                //Pega os elementos
+                var nota1 = document.getElementById("nota1");
+                var nota2 = document.getElementById("nota2");
+                var media = document.getElementById("media");
+                //Pega os valores
+                var n1 = Number(nota1.value);
+                var n2 = Number(nota2.value);
+                var med = (n1 + n2) / 2;
+                //Mostra o resultado
+                media.innerHTML = "A média é " + med
+            }
+            function limpar(){
+                //Pega os elementos
+                var nota1 = document.getElementById("nota1");
+                var nota2 = document.getElementById("nota2");
+                var media = document.getElementById("media");
+                //Zera os valores
+                nota1.value = "";
+                nota2.value = "";
+                media.innerHTML = "";
+                nota1.focus();
+            }            
+        </script>
+        <br/><br/>
+        <!-- 2- Peça para o usuário digitar a largura e altura de um retangulo. Calcule e mostre sua área (largura * altura)
+        !-->
+        <h1>Exercício 2</h1>
+        Largura
+        <input type="number" id="largura">
+        <br/>
+        Altura
+        <input type="number" id="altura">
+        <br/>
+        <input type="button" value="calcule" onclick="area()">
+        <input type="button" value="limpar" onclick="limpar1()"/>
+        <br/>
+        <div id="area"></div>
+        <script>
+            function area(){
+                //Pega os elementos
+                var larg = document.getElementById("largura");
+                var alt = document.getElementById("altura");
+                var ar = document.getElementById("area");
+                //Pega os valores
+                var largura = parseFloat(larg.value);
+                var altura = parseFloat(alt.value);
+                var area =  largura * altura;
+                //Mostra o resultado
+                ar.innerHTML = "A área é " + area;
+            }
+            function limpar1(){
+                //Pega os elementos
+                var larg = document.getElementById("largura");
+                var alt = document.getElementById("altura");
+                var ar = document.getElementById("area");
+                //Zera os valores
+                larg.value = "";
+                alt.value="";
+                ar.innerHTML="";
+                larg.focus();
+            }
+        </script>
+        <br/><br/>
+    <!--  3- Peça para o usuário digitar o nome de uma pessoa e seu ano de nascimento. Mostre uma mensagem semelhante a esta: "Olá FULANO, você tem 25 anos", sendo FULANO foi o nome que  o usuário digitou e 25 é a sua idade calculada.
+        !-->
+        <h1>Exercicio 3</h1>
+        Nome
+        <input type="text" id="nome">
+        <br/>
+        Ano de nascimento
+        <input type="number" id="ano">
+        <br/>
+        <input type="button" value="cumprimente" onclick="calcule()">
+        <input type="button" value="limpar" onclick="limpar2()">
+        <div id="cumprimente"></div>
+        <script>
+            function calcule(){
+                //Pega os elementos
+                var nome = document.getElementById("nome");
+                var ano = document.getElementById("ano");
+                var resp = document.getElementById("cumprimente");
+                //Pega os valores
+                var n = nome.value;
+                var a = parseInt(ano.value)
+                var idade = 2023 - a;
+                //Mostra o resultado
+                resp.innerHTML = "Olá " + n + " você tem " + idade + " anos"
+            }
+            function limpar2(){
+                //Pega os elementos
+                var nome = document.getElementById("nome");
+                var ano = document.getElementById("ano");
+                var resp = document.getElementById("cumprimente");
+                //Zera os valores
+                nome.value="";
+                ano.value="";
+                resp.innerHTML="";
+                nome.focus();
+            }
+        </script>
+    </body>
+</html>

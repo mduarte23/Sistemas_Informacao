@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <title>Iphone</title>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <meta charset="utf-8"/>
+    </head>
+    <body>
+        <div class="borda">
+            <div class="centro">
+                <img src="./img/iphone.jpg" width="180px">
+            </div>
+            <div class="titulo">
+                iPhone 12 Pro 256Gb Azul
+            </div>
+            <div class="valor" id="valor">
+                R$ 5.300,00
+            </div>
+        
+            <div class="titulo">
+                Trocafy
+            </div>
+            <div class= valor id="6x">
+                parcela
+            </div>
+            <div class= valor id="juros1">
+                total
+            </div>
+            <div class= valor id="24x">
+                parcela
+            </div>
+            <div class= valor id="juros2">
+                total
+            </div>
+        </div>
+        <script>
+            //Calcule e mostre o preço do produto em reais
+            //dividido em 6 parcela acrescentando 10%
+            //de juros (mostre o valor total e o valor 
+            //de cada parcela)
+            //mostre também o preço em 24x acrescentando 
+            //25% de juros (mostre o valor total e o valor de cada parcela)
+            var v = document.getElementById("valor");
+            var dolar = 1000;
+            var cotacao = 5.31;
+            var reais = dolar * cotacao;
+            v.innerHTML = "R$ " + reais.toFixed(2);
+            var parcela1 = document.getElementById("6x");
+            var juros1 = document.getElementById("juros1");
+            var x6 = (reais * 0.10) + reais;
+            var parcela6 = x6 / 6;
+            parcela1.innerHTML= "6x de R$" + parcela6.toFixed(2);
+            juros1.innerHTML = "Preço em 6x R$" + x6.toFixed(2);
+            var parcela2 = document.getElementById("24x");
+            var juros2 = document.getElementById("juros2");
+            var x24 = (reais * 0.25) + reais;
+            var parcela24 = x24 / 24;
+            parcela2.innerHTML= "24x de R$" + parcela24.toFixed(2);
+            juros2.innerHTML= "Preço em 24x R$" + x24.toFixed(2);
+
+        </script>
+    </body>
+</html>

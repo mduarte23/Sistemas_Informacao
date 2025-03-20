@@ -1,0 +1,57 @@
+<!--6 - considere que um carro faz 9km/litro de consumo com alcool. Já na gasolina ele faz
+11km/litro. Faça um algoritmo em que o usuário irá digitar a distância que deseja viajar, o
+preço do alcool e o preço do litro da gasolina. Calcule e mostre o valor que será gasto caso
+abasteça com alcool e o valor gasto -->
+
+<html>
+    <head>
+        <title>Consumo</title>
+    </head>
+    <body>
+        <h1>Consumo de combustível</h1>
+        Distância: 
+        <input type="number" id="distancia"/>
+        <br/>
+        Preço do alcool:
+        <input type="number" id="alcool"/>
+        <br/>
+        Preço da gasolina:
+        <input type="number" id="gasolina"/>
+        <br/>
+        <input type="button" value="Calcule" onclick="calcular()"/>
+        <input type="button" value="Limpar" onclick="limpar()"/>
+        <div id="gasto"></div>
+
+        <script>
+            function calcular(){
+                //pega os elementos
+                var distancia = document.getElementById("distancia");
+                var alcool = document.getElementById("alcool");
+                var gasolina = document.getElementById("gasolina");
+                var gasto = document.getElementById("gasto");
+                //pega os valores
+                var dist = parseFloat(distancia.value);
+                var alc = parseFloat(alcool.value);
+                var gas = parseFloat(gasolina.value);
+                //calcula o resultado
+                var g_alcool = (dist / 9) * alc;
+                var g_gasolina = (dist / 11) * gas;
+                //mostra o resultado
+                gasto.innerHTML = "O valor gasto com alcool será R$" + g_alcool.toFixed(2) + " e o valor gasto com gasolina será R$" + g_gasolina.toFixed(2);
+            }
+            function limpar(){
+                var distancia = document.getElementById("distancia");
+                var alcool = document.getElementById("alcool");
+                var gasolina = document.getElementById("gasolina");
+                var gasto = document.getElementById("gasto");
+
+                distancia.value="";
+                alcool.value="";
+                gasolina.value="";
+                gasto.innerHTML="";
+                distancia.focus()
+            }
+            
+        </script>
+    </body>
+</html>

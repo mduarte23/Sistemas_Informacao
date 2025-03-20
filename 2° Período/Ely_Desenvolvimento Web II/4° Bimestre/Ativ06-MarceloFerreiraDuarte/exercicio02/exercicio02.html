@@ -1,0 +1,40 @@
+<!--1)	Implemente um sistema Web que receba o nome do atleta e sua faixa etária em uma TAG <select> e o sistema deverá informar a categoria do atleta. Nessa TAG <selec.t. deverá ter os seguintes itens /opções: Abaixo de 14 anos; Entre 14 e 15 anos; Entre 16 e 17 anos; De 18 à 20 anos; Acima de 20 anos. Após o usuário digitar o nome do atleta e selecionar uma opção na TAG <select>, o usuário deverá clicar em um botão e o sistema deverá informar o nome do atleta e em qual categoria o atleta se enquadra, de acordo com a tabela seguinte: 
+- Abaixo de 14 anos  - mirim;
+- Entre 14 e 15 anos – infantil;
+- Entre 16 e 17 anos – juvenil;
+- De 18 à 20 anos – juniores;
+- Acima de 20 anos – profissional.
+-->
+
+<html>
+    <head>
+        <title>Atletas</title>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        <h1>Categoria do Atleta</h1>
+        <label>
+            Nome:
+            <input type="text" id="nome"/>
+        </label>
+        <br/>
+        <label>
+            Faixa etaria:
+            <select id="etaria">
+                <option>Selecione</option>
+                <option>Abaixo de 14 anos</option>
+                <option>Entre 14 e 15 anos</option>
+                <option>Entre 16 e 17 anos</option>
+                <option>De 18 à 20 anos</option>
+                <option>Acima de 20 anos</option>
+            </select>
+        </label>
+        <br/>
+        <input type="button" value="Definir" onclick="definir()"/>
+        <input type="button" value="Limpar" onclick="limpar()"/>
+        <br/>
+        <div id="resp"></div>
+        <script src="script.js"></script>
+    </body>
+</html>

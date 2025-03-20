@@ -1,0 +1,12 @@
+body{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    margin-top: 50px;
+    background-color: azure;
+}
+input, select{
+    margin: 15px;
+}
+.resp{
+    color:rgb(255, 17, 0)
+}

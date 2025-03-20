@@ -1,0 +1,44 @@
+<!--1)	Implemente um sistema Web que o usuário deverá digitar dois números e selecionar qual operação deverá ser realizada (adição, subtração, multiplicação, divisão e resto). Ao selecionar a operação o sistema deverá informar qual foi a operação selecionada e qual o resultado da operação.
+
+-->
+
+<html>
+    <head>
+        <title>Calculadora</title>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        <h1>Calculadora</h1>
+        <label>
+            Primeiro número:
+            <input type="number" id="numero1"/>
+        </label>
+        <br/>
+        <label>
+            Segundo número:
+            <input type="number" id="numero2"/>
+        </label>
+        <br>
+        <h3>Selecione a operação</h3>
+        <label>
+            <select id="operacao">
+                <option>...</option>
+                <option>Adição</option>
+                <option>Subtração</option>
+                <option>Multiplicação</option>
+                <option>Divisão</option>
+                <option>Resto</option>
+            </select>
+        </label>
+        <br/>
+        <input type="button" value="Calcular" onclick="calcular()">
+        <input type="button" value="Limpar" onclick="limpar()"/>
+        <br/>
+        <div id="resp" class="resp"></div>
+        <script src="script.js"></script>
+        
+
+        
+    </body>
+</html>

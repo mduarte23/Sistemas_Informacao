@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>Exemplo de Evento</title>
+    </head>
+    <body>
+        <div id="valor">???</div>
+        <div onclick="evento()">Clique Aqui</div>
+        <div onclick="eventoazul()">Azul</div>
+        <script>
+            function evento(){
+                var x = 20;
+                //altera o valor da tag
+                document.getElementById("valor").innerHTML = x;
+                //altera a cor de fundo
+                document.getElementById("valor").style.background = "red";
+            }
+            function eventoazul(){
+                document.getElementById("valor").style.background = "blue";
+            }
+        </script>
+    </body>
+</html>

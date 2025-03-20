@@ -1,0 +1,23 @@
+<html>
+    <body>
+        <h1>Tabuada</h1>
+        numero:
+        <input type="number" id="numero"/>
+        <a onclick="tabuada()">Tabuada</a>
+        <div id="resp"></div>
+        <script>
+
+            function tabuada() {
+                var num = Number(document.getElementById("numero").value);
+                var resp = document.getElementById("resp");
+                resp.innerHTML="";
+                for (var i=1; i<=10; i++) {
+                    var r = num * i;
+                    resp.innerHTML=  resp.innerHTML + num + " x " + i + " é igual a " + r + "<br>";
+                }
+            }
+            
+        </script>
+         
+    </body>
+</html>

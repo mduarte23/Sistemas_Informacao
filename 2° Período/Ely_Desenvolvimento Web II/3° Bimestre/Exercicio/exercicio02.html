@@ -1,0 +1,58 @@
+<!--2 - Em uma corrida automobilística, o grid de largada é determinado pelo tempo médio em que o piloto leva para efetuar cada volta no circuito. Considerando que o piloto fará 3 voltas, mostre o tempo total gasto e a média de tempo entre as voltas.-->
+
+<html>
+    <head>
+        <title>Grid de Largada</title>
+    </head>
+    <body>
+        <h1>Grid de Largada</h1>
+        Volta 1:
+        <input type="number" id="volta1"/>
+        <br/>
+        Volta 2:
+        <input type="number" id="volta2"/>
+        <br/>
+        Volta 3:
+        <input type="number" id="volta3"/>
+        <br/>
+        <input type="button" value="Calcular" onclick="calcule()"/>
+        <input type="button" value="Limpar" onclick="limpar()"/>
+        <div id="total"></div>
+        <br/>
+        <div id="media"></div>
+        <script>
+            function calcule(){
+                //Pega os elementos
+                var volta1 = document.getElementById("volta1");
+                var volta2 = document.getElementById("volta2");
+                var volta3 = document.getElementById("volta3");
+                var total = document.getElementById("total");
+                var media = document.getElementById("media");
+                //Pega os valores
+                var v1 = parseFloat(volta1.value);
+                var v2 = parseFloat(volta2.value);
+                var v3 = parseFloat(volta3.value);
+                //Calcula os resultados
+                var soma = v1 + v2 + v3;
+                var mediav = soma / 3;
+                //Mostra o resultado
+                total.innerHTML = "O tempo total foi " + soma;
+                media.innerHTML = "O tempo médio de volta foi " + mediav.toFixed(2);
+            }
+            function limpar(){
+                var volta1 = document.getElementById("volta1");
+                var volta2 = document.getElementById("volta2");
+                var volta3 = document.getElementById("volta3");
+                var total = document.getElementById("total");
+                var media = document.getElementById("media");
+
+                volta1.value = "";
+                volta2.value="";
+                volta3.value="";
+                total.innerHTML="";
+                media.innerHTML="";
+                volta1.focus();
+            }
+        </script>
+    </body>
+</html>

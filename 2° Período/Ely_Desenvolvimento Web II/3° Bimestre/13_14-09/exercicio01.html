@@ -1,0 +1,27 @@
+<!--
+    Peça para o usuário digitar o preço de um produto e a quantidade e mostre o valor total, sendo que se a pessoa comprar mais de 10 itens ela ganha 10% de desconto
+-->
+
+<html>
+    <head>
+        <title>Desconto</title>
+        <meta charset="utf-8"/>
+    </head>
+    <body>
+        <h1>Compras</h1>
+        <label>
+            Preço por produto:
+            <input type="number" id="preco"/>
+            <br/>
+            Quantidade:
+            <input type="number" id="qtd"/>
+            <br/>
+            <input type="button" value="Calcular" onclick="calcular()"/>
+            <input type="button" value="Limpar" onclick="limpar()"/>
+            <br/>
+            <div id="resp"></div>
+            <script src="exercicio01.js"></script>
+        </label>
+        
+    </body>
+</html>
