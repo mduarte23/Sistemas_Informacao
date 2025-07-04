@@ -1,0 +1,18 @@
+{
+    "nome": "Marcelo",
+    "telefone": "(35)992625881",
+    "e-mail": "006880@libertas.edu.br",
+    "endereco": {
+        "logradouro": "Rua Maria Martha",
+        "numero": "75",
+        "bairro": "Village Paraiso",
+        "cidade": "São Sebastião do Paraíso",
+        "uf": "MG",
+        "cep": "37956-344"
+    },
+    "filmes preferidos": [
+        "Star Wars: Episódio V",
+        "Pulp Fiction",
+        "Titanic"
+    ]
+}

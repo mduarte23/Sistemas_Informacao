@@ -1,0 +1,601 @@
+:root {
+    --primary: #00f7ff;
+    --secondary: #7b2dff;
+    --dark: #0a0a1a;
+    --darker: #050510;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--darker) !important;
+    color: white;
+    overflow-x: hidden;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(123, 45, 255, 0.15) 0%, transparent 30%),
+        radial-gradient(circle at 80% 70%, rgba(0, 247, 255, 0.15) 0%, transparent 30%);
+    z-index: -1;
+}
+
+.container {
+    text-align: center;
+    padding: 2rem;
+    max-width: 1200px;
+}
+
+h1 {
+    color: white;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    font-weight: 300;
+    position: relative;
+    display: inline-block;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    perspective: 1000px;
+}
+
+.card {
+    background: rgba(15, 15, 30, 0.7);
+    padding: 2.5rem;
+    border-radius: 15px;
+    width: 280px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.919);
+    backdrop-filter: blur(10px);
+    transform-style: preserve-3d;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        transparent,
+        rgba(245, 248, 248, 0.149),
+        transparent
+    );
+    transform: rotate(30deg);
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card:hover {
+    transform: translateY(-10px) rotateX(5deg);
+    box-shadow: 0 15px 35px rgba(223, 227, 227, 0.159);
+    border-color: rgba(0, 247, 255, 0.3);
+}
+
+.card:hover::before {
+    left: 100%;
+}
+
+.card h2 {
+    color: white;
+    margin: 1rem 0;
+    font-size: 1.5rem;
+    font-weight: 500;
+    position: relative;
+    display: inline-block;
+}
+
+.card h2::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, var(--primary), transparent);
+}
+
+.card p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.card i {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.particle {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    50% { transform: translateY(-20px) translateX(10px); }
+}
+
+@media (max-width: 768px) {
+    .card-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .card {
+        width: 100%;
+        max-width: 350px;
+    }
+}
+
+/* Estilos para a tabela - mantendo o tema */
+.card-table {
+    background: rgba(15, 15, 30, 0.7);
+    padding: 2rem;
+    border-radius: 15px;
+    width: 100%;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.table-header {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1.5rem;
+}
+
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: white;
+}
+
+.custom-table th {
+    text-align: left;
+    padding: 1rem;
+    border-bottom: 1px solid rgba(0, 247, 255, 0.3);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+.custom-table td {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.custom-table tr:hover td {
+    background: rgba(0, 247, 255, 0.05);
+}
+
+.btn-action {
+    background: var(--primary);
+    color: var(--darker);
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-action:hover {
+    background: #00e1e8;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 247, 255, 0.3);
+}
+
+.btn-action i {
+    color: var(--darker);
+}
+
+/* Botões de ação na tabela */
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-edit, .btn-delete {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.8rem;
+}
+
+.btn-edit {
+    background: rgba(0, 247, 255, 0.2);
+    color: var(--primary);
+}
+
+.btn-delete {
+    background: rgba(255, 0, 0, 0.2);
+    color: #ff6b6b;
+}
+
+.btn-edit:hover, .btn-delete:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para os novos componentes */
+.custom-toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(15, 15, 30, 0.95);
+    border-left: 4px solid var(--primary);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transform: translateX(100%);
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.custom-toast.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.custom-toast.success {
+    border-color: #00c853;
+}
+
+.custom-toast.error {
+    border-color: #ff3d00;
+}
+
+.custom-toast i {
+    font-size: 1.2rem;
+}
+
+.custom-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1050;
+}
+
+.modal-confirm {
+    background: rgba(15, 15, 30, 0.95);
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid var(--primary);
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+}
+
+.modal-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.modal-icon.warning {
+    color: #ffc107;
+}
+
+.modal-confirm h3 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.modal-confirm p {
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.btn-cancel, .btn-confirm {
+    padding: 0.7rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-cancel {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--primary);
+    color: var(--primary);
+}
+
+.btn-confirm {
+    background: rgba(255, 0, 0, 0.2);
+    border: 1px solid #ff3d00;
+    color: #ff6b6b;
+}
+
+.btn-cancel:hover {
+    background: rgba(0, 247, 255, 0.1);
+}
+
+.btn-confirm:hover {
+    background: rgba(255, 0, 0, 0.3);
+}
+
+.loading-row, .error-row, .empty-row {
+    text-align: center;
+    padding: 2rem !important;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.loading-row i, .error-row i, .empty-row i {
+    margin-right: 0.5rem;
+}
+
+.error-row {
+    color: #ff6b6b;
+}
+
+.empty-row {
+    color: rgba(0, 247, 255, 0.7);
+}
+
+.btn-pulse {
+    animation: pulse 0.5s;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); box-shadow: 0 0 15px var(--primary); }
+    100% { transform: scale(1); }
+}
+
+/* Estilização do modal para combinar com o tema */
+.modal-content {
+    background: rgba(15, 15, 30, 0.95) !important;
+    border: 1px solid var(--primary) !important;
+    backdrop-filter: blur(10px);
+}
+
+.modal-header {
+    border-bottom: 1px solid rgba(0, 247, 255, 0.2) !important;
+}
+
+.modal-footer {
+    border-top: 1px solid rgba(0, 247, 255, 0.2) !important;
+}
+
+/* Botão Salvar personalizado */
+.modal-footer .btn-primary {
+    background: var(--primary) !important;
+    color: var(--darker) !important;
+    border: none !important;
+    padding: 0.6rem 1.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.modal-footer .btn-primary:hover {
+    background: #00e1e8 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 247, 255, 0.3);
+}
+
+/* Botão Cancelar personalizado */
+.modal-footer .btn-secondary {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: var(--primary) !important;
+    border: 1px solid var(--primary) !important;
+    transition: all 0.3s ease;
+}
+
+.modal-footer .btn-secondary:hover {
+    background: rgba(0, 247, 255, 0.1) !important;
+}
+
+/* Estilos específicos para a agenda */
+.card-table {
+    background: rgba(15, 15, 30, 0.8);
+    padding: 2rem;
+    border-radius: 15px;
+    width: 100%;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.custom-table th {
+    text-align: left;
+    padding: 1rem;
+    border-bottom: 1px solid rgba(0, 247, 255, 0.3);
+    font-weight: 300;
+    color: var(--primary);
+}
+
+.custom-table td {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.custom-table tr:hover td {
+    background: rgba(0, 247, 255, 0.05);
+}
+
+/* Estilos para o modal personalizado */
+.custom-modal-bg {
+    background: rgba(15, 15, 30, 0.95) !important;
+    border: 1px solid var(--primary) !important;
+    backdrop-filter: blur(10px);
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.input-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary);
+    z-index: 2;
+}
+
+.custom-input {
+    background: rgba(30, 30, 60, 0.7) !important;
+    border: 1px solid rgba(0, 247, 255, 0.2) !important;
+    color: white !important;
+    padding-left: 40px !important;
+    border-radius: 8px !important;
+}
+
+.custom-input:focus {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 0.25rem rgba(0, 247, 255, 0.1) !important;
+}
+
+.btn-save {
+    background: var(--primary) !important;
+    color: var(--darker) !important;
+    border: none !important;
+    padding: 0.7rem 1.5rem !important;
+    font-weight: 500 !important;
+    border-radius: 8px !important;
+}
+
+.btn-save:hover {
+    background: #00e1e8 !important;
+    transform: translateY(-2px);
+}
+
+.btn-cancel {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: var(--primary) !important;
+    border: 1px solid var(--primary) !important;
+    padding: 0.7rem 1.5rem !important;
+    border-radius: 8px !important;
+}
+
+.btn-cancel:hover {
+    background: rgba(0, 247, 255, 0.1) !important;
+}
+
+/* Ajuste para mobile */
+@media (max-width: 768px) {
+    .card-table {
+        padding: 1rem;
+    }
+    
+    .custom-table {
+        display: block;
+        overflow-x: auto;
+    }
+}
+
+.custom-input, 
+.custom-input::placeholder,
+.form-control,
+.form-control::placeholder {
+    color: white !important;
+}
+
+select.custom-input,
+select.form-control {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2300f7ff'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 1em;
+    padding-right: 30px !important;
+}
+
+select.custom-input option,
+select.form-control option {
+    background: rgba(30, 30, 60, 0.9);
+    color: white;
+    border: none;
+}
+
+/* Garantir que todos os inputs tenham texto branco */
+input, select, textarea {
+    color: white !important;
+}
+
+/* Corrigir cor do ícone de fechar do modal */
+.btn-close-white {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+/* Melhorar visibilidade dos placeholders */
+::placeholder {
+    color: rgba(255, 255, 255, 0.6) !important;
+}

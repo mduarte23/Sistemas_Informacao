@@ -1,0 +1,49 @@
+CREATE DATABASE agenda
+
+USE agenda
+
+CREATE TABLE categoria(
+	id_categoria INT PRIMARY KEY AUTO_INCREMENT,
+	categoria VARCHAR (255)
+);
+
+CREATE TABLE contato(
+	id_contato INT PRIMARY KEY AUTO_INCREMENT,
+	nome VARCHAR(255),
+	telefone VARCHAR (255),
+	email VARCHAR (255),
+	id_categoria INT,
+	
+	CONSTRAINT fk_categoria
+	FOREIGN KEY (id_categoria)
+	REFERENCES categoria(id_categoria)
+);
+
+CREATE USER 'EngSoftII'@'%' IDENTIFIED BY 'trabalhoLucao';
+GRANT ALL ON agenda.* TO 'EngSoftII'@'%' WITH GRANT OPTION;
+
+FLUSH PRIVILEGES;
+
+
+-- Inserir categorias
+INSERT INTO categoria (categoria) VALUES 
+('Família'),
+('Amigos'),
+('Trabalho'),
+('Serviços'),
+('Emergência');
+
+-- Inserir contatos
+INSERT INTO contato (nome, telefone, email, id_categoria) VALUES
+('João Silva', '11988887777', 'joao@gmail.com', 1),
+('Maria Oliveira', '11999998888', 'maria@gmail.com', 2),
+('Carlos Santos', '1188776655', 'carlos@empresa.com', 3),
+('Ana Paula', '1177665544', 'ana.paula@hotmail.com', 1),
+('Roberto Lima', '11911223344', 'roberto@servicos.com', 4),
+('Fernanda Souza', '11933445566', 'fernanda@empresa.com', 3),
+('Lucas Pereira', '11922334455', 'lucas@gmail.com', 2),
+('Juliana Mendes', '11955667788', 'juliana@yahoo.com', 1),
+('Pedro Henrique', '11966554433', 'pedro@contato.com', 4),
+('Laura Castro', '11977889900', 'laura@emergencia.com', 5);
+
+
