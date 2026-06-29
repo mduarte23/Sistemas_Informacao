@@ -1,12 +1,13 @@
-"""Schemas Pydantic da API de extração de vagas.
+"""Schemas Pydantic da API de extracao de vagas.
 
-Esta é a fonte da verdade do formato. Tanto a API quanto o cliente Ollama
-referenciam estas classes para garantir que estamos todos falando do mesmo
-JSON.
+Esta e a fonte da verdade do formato retornado pela aplicacao.
 """
+
+from difflib import get_close_matches
 from enum import Enum
 import unicodedata
-from typing import Optional, List, Any
+from typing import Any, List, Optional
+
 from pydantic import BaseModel, Field, field_validator
 
 
@@ -18,22 +19,46 @@ def _null_texto_para_none(valor: Any) -> Any:
 
 def _normalizar_texto(valor: str) -> str:
     sem_acentos = unicodedata.normalize("NFD", valor.strip().lower())
-    return "".join(
+    sem_marcas = "".join(
         caractere
         for caractere in sem_acentos
         if unicodedata.category(caractere) != "Mn"
     )
+    com_espacos = "".join(
+        caractere if caractere.isalnum() else " "
+        for caractere in sem_marcas
+    )
+    return " ".join(com_espacos.split())
+
+
+def _normalizar_por_alias(
+    valor: str,
+    aliases: dict[str, str],
+    cutoff: float = 0.8,
+) -> str:
+    chave = _normalizar_texto(valor)
+
+    if chave in aliases:
+        return aliases[chave]
+
+    match = get_close_matches(chave, aliases.keys(), n=1, cutoff=cutoff)
+    if match:
+        return aliases[match[0]]
+
+    return valor
 
 
 class Modalidade(str, Enum):
     """Modalidade de trabalho declarada na vaga."""
+
     REMOTO = "remoto"
     HIBRIDO = "hibrido"
     PRESENCIAL = "presencial"
 
 
 class Nivel(str, Enum):
-    """Nível de senioridade declarado na vaga."""
+    """Nivel de senioridade declarado na vaga."""
+
     ESTAGIO = "estagio"
     JUNIOR = "junior"
     PLENO = "pleno"
@@ -41,10 +66,8 @@ class Nivel(str, Enum):
 
 
 class Salario(BaseModel):
-    """Faixa salarial. Ambos os campos são opcionais para acomodar vagas
-    com apenas o mínimo, apenas o máximo, ou nenhum dos dois (caso de
-    salário "a combinar" — neste caso, o objeto Salario inteiro deve ser
-    None na Vaga)."""
+    """Faixa salarial da vaga."""
+
     min: Optional[float] = None
     max: Optional[float] = None
 
@@ -55,12 +78,9 @@ class Salario(BaseModel):
 
 
 class Vaga(BaseModel):
-    """Estrutura final extraída de um anúncio de vaga.
+    """Estrutura final extraida de um anuncio de vaga."""
 
-    Campos opcionais devem vir como None quando não declarados no texto.
-    Inferir o que não está escrito é considerado erro de extração.
-    """
-    cargo: str = Field(..., description="Cargo/título da vaga")
+    cargo: str = Field(..., description="Cargo ou titulo da vaga")
     empresa: Optional[str] = None
     localidade: Optional[str] = None
     modalidade: Modalidade
@@ -87,7 +107,7 @@ class Vaga(BaseModel):
             "hibrido": "hibrido",
             "presencial": "presencial",
         }
-        return aliases.get(_normalizar_texto(valor), valor)
+        return _normalizar_por_alias(valor, aliases)
 
     @field_validator("nivel", mode="before")
     @classmethod
@@ -105,9 +125,10 @@ class Vaga(BaseModel):
             "senior": "senior",
             "sr": "senior",
         }
-        return aliases.get(_normalizar_texto(valor), valor)
+        return _normalizar_por_alias(valor, aliases)
 
 
 class RequestExtracao(BaseModel):
     """Corpo do POST /extrair."""
-    texto: str = Field(..., min_length=1, description="Texto bruto do anúncio")
+
+    texto: str = Field(..., min_length=1, description="Texto bruto do anuncio")
