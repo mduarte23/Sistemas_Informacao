@@ -64,10 +64,10 @@ PROCESSO INTERNO (nao exibir):
 7. Validar consistencia final
 
 Exemplo:
-Anuncio: "Desenvolvedor Python Pleno na DataCorp, Sao Paulo - hibrido. Salario R$ 8000 a R$ 12000. Requisitos: Python, SQL, Docker. Beneficios: VR, plano de saude."
+Anuncio: "Desenvolvedor Python Pleno na DataCorp, Sao Paulo - hibrido. Salario R$ 8000 a R$ 12000. Requisitos: Python, SQL, Docker. Beneficios: VR, plano de saude e day off no aniversário."
 
 JSON:
-{"cargo": "Desenvolvedor Python", "empresa": "DataCorp", "localidade": "Sao Paulo", "modalidade": "hibrido", "nivel": "pleno", "salario": {"min": 8000, "max": 12000}, "requisitos": ["Python", "SQL", "Docker"], "beneficios": ["VR", "plano de saude"]}
+{"cargo": "Desenvolvedor Python", "empresa": "DataCorp", "localidade": "Sao Paulo", "modalidade": "hibrido", "nivel": "pleno", "salario": {"min": 8000, "max": 12000}, "requisitos": ["Python", "SQL", "Docker"], "beneficios": ["VR", "plano de saude", "day off no aniversário"]}
 
 Exemplo:
 Anuncio: "TI Lopes contrata Estagiario de Engenharia de Dados. Presencial - Recife/PE. Bolsa-auxilio R$ 2.200. Estamos abertos a estudantes a partir do 4o periodo de Engenharia, Ciencia da Computacao ou Sistemas de Informacao."

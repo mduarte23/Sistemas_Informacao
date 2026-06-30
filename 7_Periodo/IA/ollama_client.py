@@ -16,7 +16,7 @@ from prompts import montar_prompt
 OLLAMA_URL = os.getenv("OLLAMA_URL", "http://23.22.22.5:11434")
 MODELO = os.getenv("OLLAMA_MODEL", "llama3.2:3b")
 
-TIMEOUT_SEGUNDOS = 500
+TIMEOUT_SEGUNDOS = 800
 
 
 class ErroExtracao(Exception):
