@@ -11,7 +11,7 @@ Conhecimentos desejados: SQL, Excel avançado, Python básico, Power BI.
 Oferecemos: vale-refeição e plano odontológico.
 
 === ANÚNCIO 3 ===
-TechHub abre vaga de Engenheiro de Software Sênior. Presencial em São Paulo - capital.
+. Presencial em São Paulo - capital.
 Faixa salarial: até R$ 18.000. Necessário experiência com sistemas distribuídos,
 Kubernetes, AWS, e linguagens como Go ou Java. Plano de saúde familiar.
 
@@ -29,3 +29,4 @@ Benefícios: home office subsidiado, gympass, equipamento Apple, 30 dias de fér
 TI Lopes contrata Estagiário de Engenharia de Dados. Presencial - Recife/PE.
 Bolsa-auxílio R$ 2.200. Vagas afirmativas. Estamos abertos a estudantes a partir
 do 4o período de Engenharia, Ciência da Computação ou Sistemas de Informação.
+TechHub abre vaga de Engenheiro de Software Sênior

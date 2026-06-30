@@ -160,5 +160,5 @@ Agora corrija e retorne o JSON válido:
     except ValidationError as e:
         print(f"[validacao] Falha final: {e.errors()}")
         raise ErroExtracao(
-            "Modelo não conseguiu gerar JSON válido após retry."
+            "Modelo não conseguiu gerar JSON válido após retentativa."
         ) from e
