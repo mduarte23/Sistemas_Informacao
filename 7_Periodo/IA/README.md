@@ -35,7 +35,7 @@ export OLLAMA_URL=http://SEU_EIP:11434
 ## Como rodar
 
 ```bash
-uvicorn main:app --reload
+python -m uvicorn main:app --reload
 ```
 
 A API sobe em `http://localhost:8000`.
